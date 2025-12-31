@@ -139,7 +139,7 @@ export default function Hero() {
       </div>
       
       {/* Hidden SEO content for search engines */}
-      <meta itemProp="url" content="https://ajithlalr.com" />
+      <meta itemProp="url" content="https://ajithlal-red.vercel.app" />
       <link itemProp="sameAs" href="https://linkedin.com/in/ajithlalr" />
       <link itemProp="sameAs" href="https://github.com/ajithlalrg" />
     </section>

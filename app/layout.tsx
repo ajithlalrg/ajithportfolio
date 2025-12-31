@@ -9,7 +9,7 @@ const inter = Inter({
   variable: "--font-inter",
 });
 
-const siteUrl = "https://ajithlalr.com";
+const siteUrl = "https://ajithlal-red.vercel.app";
 const siteName = "Ajith Lal R | Engineering Manager & Technical Delivery Manager";
 const siteDescription = "Engineering Manager with 9+ years of experience leading enterprise-scale digital platforms for Fortune 500 clients. Expert in React, TypeScript, Adobe Experience Manager (AEM), and Magento Commerce. Currently at PwC India, leading 20+ engineers across global e-commerce and retail projects. Open to international opportunities.";
 

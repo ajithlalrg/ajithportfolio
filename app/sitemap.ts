@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://ajithlalr.com';
+  const baseUrl = 'https://ajithlal-red.vercel.app';
   const lastModified = new Date();
 
   return [
