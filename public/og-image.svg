@@ -28,20 +28,23 @@
   <text x="100" y="420" font-family="system-ui, -apple-system, sans-serif" font-size="32" fill="#94a3b8">Engineering Manager | Technical Delivery Manager</text>
   
   <!-- Subtitle -->
-  <text x="100" y="480" font-family="system-ui, -apple-system, sans-serif" font-size="24" fill="#64748b">9+ Years • Fortune 500 Clients • Global Delivery</text>
+  <text x="100" y="480" font-family="system-ui, -apple-system, sans-serif" font-size="24" fill="#64748b">9+ Years • PwC India • Fortune 500 Clients</text>
   
   <!-- Skills badges -->
   <rect x="100" y="520" width="100" height="36" rx="18" fill="#1e40af" opacity="0.8"/>
   <text x="150" y="545" font-family="system-ui, -apple-system, sans-serif" font-size="16" fill="white" text-anchor="middle">React</text>
   
-  <rect x="220" y="520" width="130" height="36" rx="18" fill="#7c3aed" opacity="0.8"/>
-  <text x="285" y="545" font-family="system-ui, -apple-system, sans-serif" font-size="16" fill="white" text-anchor="middle">TypeScript</text>
+  <rect x="220" y="520" width="100" height="36" rx="18" fill="black" opacity="0.8"/>
+  <text x="270" y="545" font-family="system-ui, -apple-system, sans-serif" font-size="16" fill="white" text-anchor="middle">Next.js</text>
   
-  <rect x="370" y="520" width="80" height="36" rx="18" fill="#dc2626" opacity="0.8"/>
-  <text x="410" y="545" font-family="system-ui, -apple-system, sans-serif" font-size="16" fill="white" text-anchor="middle">AEM</text>
+  <rect x="340" y="520" width="130" height="36" rx="18" fill="#7c3aed" opacity="0.8"/>
+  <text x="405" y="545" font-family="system-ui, -apple-system, sans-serif" font-size="16" fill="white" text-anchor="middle">TypeScript</text>
   
-  <rect x="470" y="520" width="110" height="36" rx="18" fill="#ea580c" opacity="0.8"/>
-  <text x="525" y="545" font-family="system-ui, -apple-system, sans-serif" font-size="16" fill="white" text-anchor="middle">Magento</text>
+  <rect x="490" y="520" width="80" height="36" rx="18" fill="#dc2626" opacity="0.8"/>
+  <text x="530" y="545" font-family="system-ui, -apple-system, sans-serif" font-size="16" fill="white" text-anchor="middle">AEM</text>
+  
+  <rect x="590" y="520" width="120" height="36" rx="18" fill="#ea580c" opacity="0.8"/>
+  <text x="650" y="545" font-family="system-ui, -apple-system, sans-serif" font-size="16" fill="white" text-anchor="middle">Magento 2</text>
   
   <!-- Logo in corner -->
   <rect x="1020" y="80" width="80" height="80" rx="16" fill="url(#accentGrad)"/>

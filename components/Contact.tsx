@@ -103,14 +103,14 @@ export default function Contact() {
           transition={{ duration: 0.5, delay: 0.4 }}
           className="text-center"
         >
-          <div className="inline-flex items-center gap-2 px-6 py-3 bg-slate-50 dark:bg-slate-800 rounded-full text-slate-600 dark:text-slate-300">
+          <div className="inline-flex flex-wrap justify-center items-center gap-2 px-4 py-2 md:px-6 md:py-3 bg-slate-50 dark:bg-slate-800 rounded-full text-sm md:text-base text-slate-600 dark:text-slate-300">
             <motion.div
               animate={{ y: [0, -3, 0] }}
               transition={{ duration: 2, repeat: Infinity }}
             >
-              <MapPin className="w-5 h-5" />
+              <MapPin className="w-4 h-4 md:w-5 md:h-5 shrink-0" />
             </motion.div>
-            <span>Chennai, India • Open to Remote / Relocation</span>
+            <span>Chennai, India • Remote / Relocation</span>
           </div>
         </motion.div>
 
@@ -119,16 +119,16 @@ export default function Contact() {
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.5, delay: 0.5 }}
-          className="mt-12 text-center"
+          className="mt-8 md:mt-12 text-center"
         >
-          <p className="text-slate-600 dark:text-slate-400 mb-6">
+          <p className="text-slate-600 dark:text-slate-400 mb-4 md:mb-6">
             Prefer a quick conversation? Let&apos;s connect!
           </p>
           <motion.a
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             href="mailto:ajithlaldev@gmail.com?subject=Opportunity%20Discussion"
-            className="cursor-pointer inline-flex items-center gap-2 px-8 py-3 bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-medium rounded-lg hover:bg-slate-800 dark:hover:bg-slate-100 transition-colors duration-200 shadow-lg"
+            className="cursor-pointer inline-flex items-center gap-2 px-6 py-3 md:px-8 bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-medium rounded-lg hover:bg-slate-800 dark:hover:bg-slate-100 transition-colors duration-200 shadow-lg"
           >
             <Mail className="w-5 h-5" />
             Send a Message

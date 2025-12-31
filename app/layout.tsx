@@ -11,7 +11,7 @@ const inter = Inter({
 
 const siteUrl = "https://ajithlal-red.vercel.app";
 const siteName = "Ajith Lal R | Engineering Manager & Technical Delivery Manager";
-const siteDescription = "Engineering Manager with 9+ years of experience leading enterprise-scale digital platforms for Fortune 500 clients. Expert in React, TypeScript, Adobe Experience Manager (AEM), and Magento Commerce. Currently at PwC India, leading 20+ engineers across global e-commerce and retail projects. Open to international opportunities.";
+const siteDescription = "Engineering Manager / Technical Delivery Manager with 9+ years of experience delivering enterprise-scale digital platforms across e-commerce, retail, travel, and content ecosystems. Proven expertise in leading cross-functional teams (20+ engineers), owning end-to-end delivery, and driving scalable frontend architectures using Next.js, React, Adobe Experience Manager (AEM), and Magento. Currently at PwC India. Open to relocation and remote opportunities.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -24,25 +24,25 @@ export const metadata: Metadata = {
     "Ajith Lal R",
     "Engineering Manager",
     "Technical Delivery Manager",
-    "Software Engineering Leader",
-    "Engineering Manager Chennai",
+    "PwC India Manager",
+    "Frontend Developer Chennai",
     "Technical Lead India",
     "React Developer",
+    "Next.js Developer",
     "TypeScript Expert",
     "Adobe Experience Manager Developer",
     "AEM Developer",
-    "Magento Commerce Expert",
-    "E-commerce Platform Architect",
+    "Magento 2 Developer",
+    "E-commerce Frontend Developer",
     "Frontend Architecture",
-    "Full Stack Developer",
+    "Senior Frontend Developer",
     "Team Leadership",
-    "Agile Delivery Manager",
+    "Agile Delivery",
     "PwC Engineer",
     "Fortune 500 Projects",
-    "Enterprise Software Development",
+    "Enterprise Frontend Development",
     "Digital Platform Development",
-    "Headless CMS Expert",
-    "JAMstack Developer",
+    "Adobe Certified Expert",
   ],
   authors: [{ name: "Ajith Lal R", url: siteUrl }],
   creator: "Ajith Lal R",
@@ -152,10 +152,10 @@ const jsonLd = {
         height: 630,
       },
       sameAs: [
-        "https://linkedin.com/in/ajithlalr",
+        "https://linkedin.com/in/ajithlalrg",
         "https://github.com/ajithlalrg",
       ],
-      jobTitle: "Engineering Manager",
+      jobTitle: "Engineering Manager / Technical Delivery Manager",
       worksFor: {
         "@type": "Organization",
         name: "PwC India",
@@ -167,18 +167,34 @@ const jsonLd = {
         addressCountry: "India",
       },
       knowsAbout: [
-        "Software Engineering",
+        "Engineering Management",
+        "Technical Delivery",
         "React",
+        "Next.js",
         "TypeScript",
         "Adobe Experience Manager",
-        "Magento Commerce",
+        "Magento 2",
         "E-commerce Development",
-        "Technical Leadership",
-        "Agile Methodologies",
+        "Agile/Scrum",
+        "Team Leadership",
+      ],
+      hasCredential: [
+        {
+          "@type": "EducationalOccupationalCredential",
+          name: "Adobe Certified Expert - Adobe Commerce Frontend Developer",
+          credentialCategory: "certification",
+          dateCreated: "2023",
+        },
+        {
+          "@type": "EducationalOccupationalCredential",
+          name: "Adobe Certified Professional - Adobe Commerce Business Practitioner",
+          credentialCategory: "certification",
+          dateCreated: "2023",
+        },
       ],
       alumniOf: {
         "@type": "EducationalOrganization",
-        name: "Engineering College",
+        name: "St. Xavier's Catholic College of Engineering",
       },
     },
     {
