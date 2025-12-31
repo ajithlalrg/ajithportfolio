@@ -88,7 +88,7 @@ export default function Hero() {
           className="text-lg md:text-xl text-slate-600 dark:text-slate-300 max-w-2xl mx-auto mb-10 leading-relaxed"
           itemProp="description"
         >
-          Leading enterprise-scale digital platforms across e-commerce, retail, travel, and content ecosystems for Fortune 500 clients worldwide.
+          Leading enterprise-scale digital platforms across e-commerce, retail, travel, and content ecosystems for global clients.
         </motion.p>
 
         {/* CTA Buttons */}

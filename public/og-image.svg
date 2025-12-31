@@ -28,7 +28,7 @@
   <text x="100" y="420" font-family="system-ui, -apple-system, sans-serif" font-size="32" fill="#94a3b8">Engineering Manager | Technical Delivery Manager</text>
   
   <!-- Subtitle -->
-  <text x="100" y="480" font-family="system-ui, -apple-system, sans-serif" font-size="24" fill="#64748b">9+ Years • PwC India • Fortune 500 Clients</text>
+  <text x="100" y="480" font-family="system-ui, -apple-system, sans-serif" font-size="24" fill="#64748b">9+ Years • PwC India • Global Clients</text>
   
   <!-- Skills badges -->
   <rect x="100" y="520" width="100" height="36" rx="18" fill="#1e40af" opacity="0.8"/>

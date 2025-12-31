@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     "Team Leadership",
     "Agile Delivery",
     "PwC Engineer",
-    "Fortune 500 Projects",
+    "Enterprise Projects",
     "Enterprise Frontend Development",
     "Digital Platform Development",
     "Adobe Certified Expert",
