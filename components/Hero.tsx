@@ -1,9 +1,12 @@
 'use client';
 
+import { useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
 import { MapPin, ChevronDown } from 'lucide-react';
 
 export default function Hero() {
+  const router = useRouter();
+
   const scrollToProjects = () => {
     const element = document.getElementById('projects');
     element?.scrollIntoView({ behavior: 'smooth' });
@@ -117,6 +120,14 @@ export default function Hero() {
           >
             Download Resume
           </motion.a>
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            onClick={() => router.push('/dev-city')}
+            className="cursor-pointer px-8 py-3 bg-linear-to-r from-cyan-500 to-purple-500 text-white font-medium rounded-lg hover:from-cyan-400 hover:to-purple-400 transition-all duration-200 w-full sm:w-auto shadow-lg shadow-cyan-500/20"
+          >
+            Explore Dev City
+          </motion.button>
         </motion.nav>
 
         {/* Scroll indicator */}

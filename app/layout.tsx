@@ -118,15 +118,12 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#f8fafc" },
-    { media: "(prefers-color-scheme: dark)", color: "#0f172a" },
-  ],
+  themeColor: "#030014",
   width: "device-width",
   initialScale: 1,
   maximumScale: 5,
   userScalable: true,
-  colorScheme: "light dark",
+  colorScheme: "dark",
 };
 
 // JSON-LD Structured Data

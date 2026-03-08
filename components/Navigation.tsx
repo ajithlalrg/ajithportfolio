@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import ThemeToggle from './ThemeToggle';
@@ -15,6 +16,7 @@ export default function Navigation() {
     { label: 'Experience', href: '#experience' },
     { label: 'Projects', href: '#projects' },
     { label: 'Contact', href: '#contact' },
+    { label: 'Dev City', href: '/dev-city', isRoute: true },
   ];
 
   useEffect(() => {
@@ -26,10 +28,16 @@ export default function Navigation() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const scrollToSection = (href: string) => {
+  const router = useRouter();
+
+  const handleNavClick = (href: string, isRoute?: boolean) => {
     setIsMobileMenuOpen(false);
-    const element = document.querySelector(href);
-    element?.scrollIntoView({ behavior: 'smooth' });
+    if (isRoute) {
+      router.push(href);
+    } else {
+      const element = document.querySelector(href);
+      element?.scrollIntoView({ behavior: 'smooth' });
+    }
   };
 
   return (
@@ -52,7 +60,7 @@ export default function Navigation() {
             href="#hero"
             onClick={(e) => {
               e.preventDefault();
-              scrollToSection('#hero');
+              handleNavClick('#hero');
             }}
             className="cursor-pointer font-bold text-xl text-slate-900 dark:text-white"
           >
@@ -73,12 +81,18 @@ export default function Navigation() {
                     href={item.href}
                     onClick={(e) => {
                       e.preventDefault();
-                      scrollToSection(item.href);
+                      handleNavClick(item.href, item.isRoute);
                     }}
-                    className="cursor-pointer relative text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white font-medium transition-colors duration-200 group"
+                    className={`cursor-pointer relative font-medium transition-colors duration-200 group ${
+                      item.isRoute
+                        ? 'text-cyan-500 dark:text-cyan-400 hover:text-cyan-600 dark:hover:text-cyan-300'
+                        : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white'
+                    }`}
                   >
                     {item.label}
-                    <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-slate-900 dark:bg-white transition-all duration-300 group-hover:w-full" />
+                    <span className={`absolute -bottom-1 left-0 w-0 h-0.5 transition-all duration-300 group-hover:w-full ${
+                      item.isRoute ? 'bg-cyan-500 dark:bg-cyan-400' : 'bg-slate-900 dark:bg-white'
+                    }`} />
                   </a>
                 </motion.li>
               ))}
@@ -144,9 +158,13 @@ export default function Navigation() {
                       href={item.href}
                       onClick={(e) => {
                         e.preventDefault();
-                        scrollToSection(item.href);
+                        handleNavClick(item.href, item.isRoute);
                       }}
-                      className="cursor-pointer block text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white font-medium transition-colors duration-200"
+                      className={`cursor-pointer block font-medium transition-colors duration-200 ${
+                        item.isRoute
+                          ? 'text-cyan-500 dark:text-cyan-400'
+                          : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white'
+                      }`}
                     >
                       {item.label}
                     </a>
