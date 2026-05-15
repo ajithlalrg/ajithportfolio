@@ -1,138 +1,161 @@
-'use client';
+"use client";
 
-import { motion, useInView } from 'framer-motion';
-import { useRef } from 'react';
-import { Mail, Phone, Linkedin, Github, MapPin } from 'lucide-react';
+import { motion } from "framer-motion";
+import { Mail, Phone, Linkedin, Github, MapPin, ArrowUpRight } from "lucide-react";
+import Magnetic from "./Magnetic";
+import SplitText from "./SplitText";
+
+const links = [
+  {
+    icon: Mail,
+    label: "Email",
+    value: "ajithlaldev@gmail.com",
+    href: "mailto:ajithlaldev@gmail.com",
+    bg: "bg-canvas",
+    text: "text-bone",
+    tilt: -1.5,
+  },
+  {
+    icon: Phone,
+    label: "Phone",
+    value: "+91 80565 44229",
+    href: "tel:+918056544229",
+    bg: "bg-neon",
+    text: "text-ink",
+    tilt: 1.5,
+  },
+  {
+    icon: Linkedin,
+    label: "LinkedIn",
+    value: "linkedin.com/in/ajithlalrg",
+    href: "https://www.linkedin.com/in/ajithlalrg/",
+    bg: "bg-ink",
+    text: "text-bone",
+    tilt: -2,
+  },
+  {
+    icon: Github,
+    label: "GitHub",
+    value: "github.com/ajithlalrg",
+    href: "https://github.com/ajithlalrg",
+    bg: "bg-bone",
+    text: "text-ink",
+    tilt: 2,
+  },
+];
 
 export default function Contact() {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
-
-  const contactInfo = [
-    {
-      icon: Mail,
-      label: 'Email',
-      value: 'ajithlaldev@gmail.com',
-      href: 'mailto:ajithlaldev@gmail.com',
-    },
-    {
-      icon: Phone,
-      label: 'Phone',
-      value: '+91-8056544229',
-      href: 'tel:+918056544229',
-    },
-    {
-      icon: Linkedin,
-      label: 'LinkedIn',
-      value: 'linkedin.com/in/ajithlalrg',
-      href: 'https://www.linkedin.com/in/ajithlalrg/',
-    },
-    {
-      icon: Github,
-      label: 'GitHub',
-      value: 'github.com/ajithlalrg',
-      href: 'https://github.com/ajithlalrg',
-    },
-  ];
-
   return (
-    <section id="contact" className="py-20 bg-white dark:bg-slate-900" ref={ref}>
-      <div className="max-w-4xl mx-auto px-6">
-        {/* Section Header */}
+    <section id="contact" className="relative py-24 px-4 sm:px-6 overflow-hidden">
+      {/* drifting accent */}
+      <div aria-hidden className="absolute -top-24 -right-24 w-100 h-100 rounded-full bg-canvas-hi blur-[80px] opacity-40 drift pointer-events-none" />
+      <div aria-hidden className="absolute -bottom-24 -left-24 w-100 h-100 rounded-full bg-blood blur-[100px] opacity-50 drift pointer-events-none" />
+
+      <div className="relative max-w-7xl mx-auto">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-12"
+          className="text-center mb-14"
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4">
-            Get In Touch
+          <div className="inline-block bg-ink text-bone px-3 py-1 mono uppercase text-[11px] tracking-widest mb-4">
+            06 / Holler
+          </div>
+          <h2 className="display text-6xl sm:text-8xl lg:text-9xl leading-[0.85] text-bone">
+            <SplitText text="LET'S BUILD" />
+            <br />
+            <SplitText
+              text="SOMETHING"
+              delay={0.1}
+            />{" "}
+            <SplitText
+              text="LOUD."
+              delay={0.2}
+              className="bg-neon text-ink border-[3px] border-ink inline-block -rotate-3 px-4"
+            />
           </h2>
-          <motion.div
-            initial={{ width: 0 }}
-            animate={isInView ? { width: 80 } : { width: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="h-1 bg-slate-900 dark:bg-white mx-auto mb-4"
-          />
-          <p className="text-slate-600 dark:text-slate-300 max-w-xl mx-auto">
-            Open to discussing engineering leadership opportunities, 
-            technical consulting, or collaboration on enterprise projects.
+          <p className="mt-6 mono uppercase text-sm tracking-widest max-w-2xl mx-auto text-bone/90">
+            Open to engineering leadership, technical consulting, and enterprise collaborations.
+            I read every message.
           </p>
         </motion.div>
 
-        {/* Contact Cards */}
-        <div className="grid sm:grid-cols-2 gap-6 mb-12">
-          {contactInfo.map((item, index) => {
-            const IconComponent = item.icon;
-            return (
-              <motion.a
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                transition={{ duration: 0.5, delay: 0.1 * index }}
-                whileHover={{ scale: 1.03, transition: { duration: 0.2 } }}
-                whileTap={{ scale: 0.98 }}
-                href={item.href}
-                target={item.href.startsWith('http') ? '_blank' : undefined}
-                rel={item.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                className="cursor-pointer flex items-center gap-4 p-6 bg-slate-50 dark:bg-slate-800 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors duration-200 group hover:shadow-lg"
-              >
-                <motion.div
-                  whileHover={{ rotate: 10 }}
-                  className="p-3 bg-slate-200 dark:bg-slate-700 rounded-lg group-hover:bg-slate-300 dark:group-hover:bg-slate-600 transition-colors"
-                >
-                  <IconComponent className="w-6 h-6 text-slate-700 dark:text-slate-300" />
-                </motion.div>
-                <div>
-                  <p className="text-sm text-slate-500 dark:text-slate-400 font-medium">
-                    {item.label}
-                  </p>
-                  <p className="text-slate-900 dark:text-white font-semibold">
-                    {item.value}
-                  </p>
+        {/* Big CTA card */}
+        <Magnetic strength={0.18}>
+          <motion.a
+            initial={{ opacity: 0, scale: 0.94 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            whileHover={{ rotate: -1, scale: 1.012 }}
+            transition={{ type: "spring", stiffness: 200, damping: 18 }}
+            href="mailto:ajithlaldev@gmail.com?subject=Opportunity%20Discussion"
+            data-cursor="active"
+            className="group relative block bg-ink text-bone border-[3px] border-ink chunk-bone p-8 sm:p-12 overflow-hidden"
+          >
+            <div className="absolute -top-6 -right-6 w-36 h-36 bg-neon border-[3px] border-bone rounded-full rotate-12 group-hover:-rotate-12 transition-transform duration-500" />
+            <div className="absolute -bottom-8 -left-8 w-28 h-28 bg-canvas border-[3px] border-bone -rotate-12 group-hover:rotate-12 transition-transform duration-500" />
+
+            <div className="relative flex items-start justify-between gap-4">
+              <div>
+                <div className="mono uppercase text-[11px] tracking-widest text-neon flicker">★ MAIL HOTLINE</div>
+                <div className="display text-3xl sm:text-5xl mt-2 break-all">
+                  ajithlaldev@gmail.com
                 </div>
-              </motion.a>
+                <div className="mono uppercase text-[11px] tracking-widest mt-3 text-bone/70">
+                  Click → opens your mail. Subject prefilled. Reply within 24h.
+                </div>
+              </div>
+              <ArrowUpRight className="w-10 h-10 sm:w-14 sm:h-14 shrink-0 group-hover:translate-x-2 group-hover:-translate-y-2 transition-transform duration-300" />
+            </div>
+          </motion.a>
+        </Magnetic>
+
+        {/* Channel grid */}
+        <div className="mt-10 grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          {links.map((l, i) => {
+            const Icon = l.icon;
+            return (
+              <Magnetic key={l.label} strength={0.3}>
+                <motion.a
+                  initial={{ opacity: 0, y: 30, rotate: l.tilt + 6 }}
+                  whileInView={{ opacity: 1, y: 0, rotate: l.tilt }}
+                  viewport={{ once: true }}
+                  whileHover={{ rotate: 0, y: -6 }}
+                  transition={{ type: "spring", stiffness: 180, damping: 16, delay: i * 0.06 }}
+                  href={l.href}
+                  target={l.href.startsWith("http") ? "_blank" : undefined}
+                  rel={l.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                  data-cursor="active"
+                  className={`${l.bg} ${l.text} border-[3px] border-ink chunk-lg p-5 block`}
+                >
+                  <div className="flex items-center justify-between">
+                    <Icon className="w-7 h-7" />
+                    <ArrowUpRight className="w-5 h-5" />
+                  </div>
+                  <div className="mono uppercase text-[10px] tracking-widest mt-4 opacity-80">{l.label}</div>
+                  <div className="display text-lg mt-1 leading-tight break-all">{l.value}</div>
+                </motion.a>
+              </Magnetic>
             );
           })}
         </div>
 
-        {/* Location */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-          className="text-center"
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mt-12 flex flex-wrap items-center justify-center gap-3"
         >
-          <div className="inline-flex flex-wrap justify-center items-center gap-2 px-4 py-2 md:px-6 md:py-3 bg-slate-50 dark:bg-slate-800 rounded-full text-sm md:text-base text-slate-600 dark:text-slate-300">
-            <motion.div
-              animate={{ y: [0, -3, 0] }}
-              transition={{ duration: 2, repeat: Infinity }}
-            >
-              <MapPin className="w-4 h-4 md:w-5 md:h-5 shrink-0" />
-            </motion.div>
-            <span>Chennai, India • Remote / Relocation</span>
-          </div>
-        </motion.div>
-
-        {/* CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-          transition={{ duration: 0.5, delay: 0.5 }}
-          className="mt-8 md:mt-12 text-center"
-        >
-          <p className="text-slate-600 dark:text-slate-400 mb-4 md:mb-6">
-            Prefer a quick conversation? Let&apos;s connect!
-          </p>
-          <motion.a
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            href="mailto:ajithlaldev@gmail.com?subject=Opportunity%20Discussion"
-            className="cursor-pointer inline-flex items-center gap-2 px-6 py-3 md:px-8 bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-medium rounded-lg hover:bg-slate-800 dark:hover:bg-slate-100 transition-colors duration-200 shadow-lg"
-          >
-            <Mail className="w-5 h-5" />
-            Send a Message
-          </motion.a>
+          <span className="inline-flex items-center gap-2 bg-bone text-ink border-[3px] border-ink chunk px-4 py-2 mono uppercase text-[11px] tracking-widest">
+            <MapPin className="w-4 h-4" /> Chennai, India
+          </span>
+          <span className="inline-flex items-center gap-2 bg-neon text-ink border-[3px] border-ink chunk px-4 py-2 mono uppercase text-[11px] tracking-widest">
+            <span className="relative inline-flex w-2 h-2 bg-canvas border border-ink rounded-full siren" /> Open to relocation
+          </span>
+          <span className="inline-flex items-center gap-2 bg-ink text-bone border-[3px] border-ink chunk px-4 py-2 mono uppercase text-[11px] tracking-widest">
+            ★ Visa sponsorship · Remote
+          </span>
         </motion.div>
       </div>
     </section>

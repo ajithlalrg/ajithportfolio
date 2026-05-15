@@ -1,94 +1,93 @@
 import type { Metadata, Viewport } from "next";
-import { Inter } from "next/font/google";
+import { Space_Grotesk, JetBrains_Mono, Archivo_Black } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
-import ThemeProvider from "@/components/ThemeProvider";
+import { yearsOfExperience } from "@/lib/yoe";
 
-const inter = Inter({
+const sans = Space_Grotesk({
   subsets: ["latin"],
   display: "swap",
-  variable: "--font-inter",
+  variable: "--font-sans",
 });
 
+const display = Archivo_Black({
+  subsets: ["latin"],
+  weight: "400",
+  display: "swap",
+  variable: "--font-display",
+});
+
+const mono = JetBrains_Mono({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-mono",
+});
+
+const yoe = yearsOfExperience();
 const siteUrl = "https://ajithlal-red.vercel.app";
-const siteName = "Ajith Lal R | Engineering Manager & Technical Delivery Manager";
-const siteDescription = "Engineering Manager / Technical Delivery Manager with 9+ years of experience delivering enterprise-scale digital platforms across e-commerce, retail, travel, and content ecosystems. Proven expertise in leading cross-functional teams (20+ engineers), owning end-to-end delivery, and driving scalable frontend architectures using Next.js, React, Adobe Experience Manager (AEM), and Magento. Currently at PwC India. Open to relocation and remote opportunities.";
+const siteName = "Ajith Lal R — Engineering Manager & Technical Delivery Manager";
+const siteDescription = `Engineering Manager / Technical Delivery Manager with ${yoe}+ years building enterprise-scale digital platforms across e-commerce, retail, travel, and content. Leading 20+ engineers at PwC India, shipping with Next.js, React, AEM, and Magento.`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: {
-    default: siteName,
-    template: "%s | Ajith Lal R",
-  },
+  title: { default: siteName, template: "%s | Ajith Lal R" },
   description: siteDescription,
+  applicationName: "Ajith Lal R Portfolio",
+  category: "technology",
+  generator: "Next.js",
+  referrer: "origin-when-cross-origin",
   keywords: [
     "Ajith Lal R",
+    "Ajith Lal",
+    "Ajithlal",
     "Engineering Manager",
     "Technical Delivery Manager",
-    "PwC India Manager",
-    "Frontend Developer Chennai",
-    "Technical Lead India",
-    "React Developer",
+    "Frontend Architect",
+    "PwC India",
+    "Chennai",
     "Next.js Developer",
-    "TypeScript Expert",
-    "Adobe Experience Manager Developer",
+    "React Developer",
+    "Adobe Experience Manager",
     "AEM Developer",
-    "Magento 2 Developer",
-    "E-commerce Frontend Developer",
+    "Magento Frontend",
+    "Headless CMS",
     "Frontend Architecture",
-    "Senior Frontend Developer",
-    "Team Leadership",
-    "Agile Delivery",
-    "PwC Engineer",
-    "Enterprise Projects",
-    "Enterprise Frontend Development",
-    "Digital Platform Development",
     "Adobe Certified Expert",
+    "Engineering Leadership",
+    "Technical Delivery",
+    "E-commerce Architecture",
+    "Enterprise Frontend",
   ],
   authors: [{ name: "Ajith Lal R", url: siteUrl }],
   creator: "Ajith Lal R",
   publisher: "Ajith Lal R",
-  formatDetection: {
-    email: true,
-    address: true,
-    telephone: true,
-  },
+  formatDetection: { email: false, address: false, telephone: false },
+  manifest: "/manifest.json",
   icons: {
     icon: [
       { url: "/favicon.svg", type: "image/svg+xml" },
-      { url: "/icon-192.png", type: "image/png", sizes: "192x192" },
-      { url: "/icon-512.png", type: "image/png", sizes: "512x512" },
+      { url: "/icon.svg", type: "image/svg+xml" },
     ],
-    apple: [
-      { url: "/apple-icon.png", sizes: "180x180", type: "image/png" },
-    ],
-    shortcut: "/favicon.svg",
+    apple: [{ url: "/apple-icon.svg", type: "image/svg+xml" }],
+    shortcut: ["/favicon.ico"],
   },
-  manifest: "/manifest.json",
   openGraph: {
-    type: "website",
-    locale: "en_US",
+    type: "profile",
     url: siteUrl,
     title: siteName,
     description: siteDescription,
     siteName: "Ajith Lal R Portfolio",
-    images: [
-      {
-        url: "/og-image.png",
-        width: 1200,
-        height: 630,
-        alt: "Ajith Lal R - Engineering Manager & Technical Delivery Manager",
-        type: "image/png",
-      },
-    ],
+    locale: "en_US",
+    images: [{ url: "/og-image.svg", width: 1200, height: 630, alt: siteName, type: "image/svg+xml" }],
   },
   twitter: {
     card: "summary_large_image",
     title: siteName,
     description: siteDescription,
-    images: ["/og-image.png"],
+    images: ["/og-image.svg"],
     creator: "@ajithlalr",
+    site: "@ajithlalr",
   },
   robots: {
     index: true,
@@ -105,145 +104,144 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: siteUrl,
+    types: { "application/rss+xml": `${siteUrl}/feed.xml` },
   },
-  category: "technology",
-  classification: "Portfolio",
-  referrer: "origin-when-cross-origin",
-  verification: {
-    // Add your verification codes here when you have them
-    // google: "your-google-verification-code",
-    // yandex: "your-yandex-verification-code",
-    // bing: "your-bing-verification-code",
+  other: {
+    "profile:first_name": "Ajith Lal",
+    "profile:last_name": "R",
+    "profile:gender": "male",
   },
 };
 
 export const viewport: Viewport = {
-  themeColor: "#030014",
+  themeColor: "#C8334A",
   width: "device-width",
   initialScale: 1,
-  maximumScale: 5,
-  userScalable: true,
-  colorScheme: "dark",
+  colorScheme: "light",
 };
 
-// JSON-LD Structured Data
-const jsonLd = {
+const personLd = {
   "@context": "https://schema.org",
-  "@graph": [
+  "@type": "Person",
+  "@id": `${siteUrl}/#person`,
+  name: "Ajith Lal R",
+  alternateName: ["Ajith Lal", "Ajithlal R"],
+  url: siteUrl,
+  image: `${siteUrl}/og-image.svg`,
+  jobTitle: "Engineering Manager / Technical Delivery Manager",
+  description: siteDescription,
+  worksFor: {
+    "@type": "Organization",
+    name: "PwC India",
+    url: "https://www.pwc.in",
+  },
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Chennai",
+    addressRegion: "Tamil Nadu",
+    addressCountry: "IN",
+  },
+  alumniOf: {
+    "@type": "CollegeOrUniversity",
+    name: "St. Xavier's Catholic College of Engineering",
+    sameAs: "https://www.sxcce.edu.in",
+  },
+  knowsAbout: [
+    "Engineering Management",
+    "Technical Delivery",
+    "Frontend Architecture",
+    "Next.js",
+    "React",
+    "Adobe Experience Manager",
+    "Magento",
+    "Headless CMS",
+    "Agile / Scrum",
+    "Stakeholder Management",
+    "Team Mentoring",
+  ],
+  hasCredential: [
     {
-      "@type": "WebSite",
-      "@id": `${siteUrl}/#website`,
-      url: siteUrl,
-      name: "Ajith Lal R Portfolio",
-      description: siteDescription,
-      publisher: { "@id": `${siteUrl}/#person` },
-      inLanguage: "en-US",
+      "@type": "EducationalOccupationalCredential",
+      name: "Adobe Certified Expert — Commerce Frontend Developer",
+      credentialCategory: "certification",
+      recognizedBy: { "@type": "Organization", name: "Adobe" },
+      dateCreated: "2023",
     },
     {
-      "@type": "Person",
-      "@id": `${siteUrl}/#person`,
-      name: "Ajith Lal R",
-      url: siteUrl,
-      image: {
-        "@type": "ImageObject",
-        url: `${siteUrl}/og-image.png`,
-        width: 1200,
-        height: 630,
-      },
-      sameAs: [
-        "https://linkedin.com/in/ajithlalrg",
-        "https://github.com/ajithlalrg",
-      ],
-      jobTitle: "Engineering Manager / Technical Delivery Manager",
-      worksFor: {
-        "@type": "Organization",
-        name: "PwC India",
-        url: "https://www.pwc.in",
-      },
-      address: {
-        "@type": "PostalAddress",
-        addressLocality: "Chennai",
-        addressCountry: "India",
-      },
-      knowsAbout: [
-        "Engineering Management",
-        "Technical Delivery",
-        "React",
-        "Next.js",
-        "TypeScript",
-        "Adobe Experience Manager",
-        "Magento 2",
-        "E-commerce Development",
-        "Agile/Scrum",
-        "Team Leadership",
-      ],
-      hasCredential: [
-        {
-          "@type": "EducationalOccupationalCredential",
-          name: "Adobe Certified Expert - Adobe Commerce Frontend Developer",
-          credentialCategory: "certification",
-          dateCreated: "2023",
-        },
-        {
-          "@type": "EducationalOccupationalCredential",
-          name: "Adobe Certified Professional - Adobe Commerce Business Practitioner",
-          credentialCategory: "certification",
-          dateCreated: "2023",
-        },
-      ],
-      alumniOf: {
-        "@type": "EducationalOrganization",
-        name: "St. Xavier's Catholic College of Engineering",
-      },
+      "@type": "EducationalOccupationalCredential",
+      name: "Adobe Certified Professional — Commerce Business Practitioner",
+      credentialCategory: "certification",
+      recognizedBy: { "@type": "Organization", name: "Adobe" },
+      dateCreated: "2023",
     },
-    {
-      "@type": "WebPage",
-      "@id": `${siteUrl}/#webpage`,
-      url: siteUrl,
-      name: siteName,
-      isPartOf: { "@id": `${siteUrl}/#website` },
-      about: { "@id": `${siteUrl}/#person` },
-      description: siteDescription,
-      inLanguage: "en-US",
-      potentialAction: [
-        {
-          "@type": "ReadAction",
-          target: [siteUrl],
-        },
-      ],
-    },
-    {
-      "@type": "ProfilePage",
-      "@id": `${siteUrl}/#profilepage`,
-      url: siteUrl,
-      name: siteName,
-      mainEntity: { "@id": `${siteUrl}/#person` },
-      dateCreated: "2024-01-01",
-      dateModified: new Date().toISOString().split("T")[0],
-    },
+  ],
+  sameAs: [
+    "https://linkedin.com/in/ajithlalrg",
+    "https://github.com/ajithlalrg",
   ],
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+const websiteLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": `${siteUrl}/#website`,
+  url: siteUrl,
+  name: siteName,
+  description: siteDescription,
+  inLanguage: "en-US",
+  publisher: { "@id": `${siteUrl}/#person` },
+  potentialAction: {
+    "@type": "SearchAction",
+    target: `${siteUrl}/?q={search_term_string}`,
+    "query-input": "required name=search_term_string",
+  },
+};
+
+const webPageLd = {
+  "@context": "https://schema.org",
+  "@type": "ProfilePage",
+  "@id": `${siteUrl}/#webpage`,
+  url: siteUrl,
+  name: siteName,
+  isPartOf: { "@id": `${siteUrl}/#website` },
+  about: { "@id": `${siteUrl}/#person` },
+  primaryImageOfPage: { "@type": "ImageObject", url: `${siteUrl}/og-image.svg` },
+  inLanguage: "en-US",
+  breadcrumb: { "@id": `${siteUrl}/#breadcrumb` },
+};
+
+const breadcrumbLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "@id": `${siteUrl}/#breadcrumb`,
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: siteUrl },
+    { "@type": "ListItem", position: 2, name: "Profile", item: `${siteUrl}/#about` },
+    { "@type": "ListItem", position: 3, name: "Experience", item: `${siteUrl}/#experience` },
+    { "@type": "ListItem", position: 4, name: "Projects", item: `${siteUrl}/#projects` },
+    { "@type": "ListItem", position: 5, name: "Contact", item: `${siteUrl}/#contact` },
+  ],
+};
+
+const jsonLd = { "@context": "https://schema.org", "@graph": [personLd, websiteLd, webPageLd, breadcrumbLd] };
+
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className="scroll-smooth" suppressHydrationWarning>
+    <html lang="en">
       <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
+        <link rel="alternate" type="text/html" href="/sitemap.html" title="HTML Sitemap" />
+        <meta name="geo.region" content="IN-TN" />
+        <meta name="geo.placename" content="Chennai" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
       </head>
-      <body className={`${inter.variable} font-sans antialiased`}>
-        <ThemeProvider>
-          {children}
-        </ThemeProvider>
+      <body className={`${sans.variable} ${display.variable} ${mono.variable} font-sans grain`}>
+        {children}
         <Analytics />
         <SpeedInsights />
       </body>

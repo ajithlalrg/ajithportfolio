@@ -1,172 +1,170 @@
-'use client';
+"use client";
 
-import { motion } from 'framer-motion';
-import { useInView } from 'framer-motion';
-import { useRef } from 'react';
+import { motion } from "framer-motion";
+import { GraduationCap, Award } from "lucide-react";
+import CountUp from "./CountUp";
+import SplitText from "./SplitText";
+import { yearsOfExperience } from "@/lib/yoe";
+
+const yoe = yearsOfExperience();
+
+const stats = [
+  { n: yoe, suffix: "+", label: "Years shipping", bg: "bg-ink", text: "text-bone", tilt: -3 },
+  { n: 20, suffix: "+", label: "Engineers led", bg: "bg-bone", text: "text-ink", tilt: 2 },
+  { n: 20, suffix: "+", label: "Projects delivered", bg: "bg-neon", text: "text-ink", tilt: -2 },
+  { n: 10, suffix: "+", label: "Global clients", bg: "bg-canvas-hi", text: "text-bone", tilt: 3 },
+];
+
+const competencies = [
+  "Engineering Management",
+  "Technical Delivery",
+  "Agile / Scrum",
+  "Stakeholder Mgmt.",
+  "Team Mentoring",
+  "Architecture Reviews",
+];
 
 export default function About() {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
-
-  const highlights = [
-    { number: '9+', label: 'Years Experience' },
-    { number: '20+', label: 'Engineers Led' },
-    { number: '20+', label: 'Projects Delivered' },
-    { number: '10+', label: 'Global Clients' },
-  ];
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0 },
-  };
-
   return (
-    <section id="about" className="py-20 bg-white dark:bg-slate-900" ref={ref}>
-      <div className="max-w-6xl mx-auto px-6">
-        {/* Section Header */}
+    <section id="about" className="relative py-24 px-4 sm:px-6">
+      <div className="max-w-7xl mx-auto">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-12"
+          className="mb-12 flex flex-wrap items-end justify-between gap-4"
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4">
-            About Me
-          </h2>
-          <motion.div
-            initial={{ width: 0 }}
-            animate={isInView ? { width: 80 } : { width: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="h-1 bg-slate-900 dark:bg-white mx-auto"
-          />
+          <div>
+            <div className="inline-block bg-ink text-bone px-3 py-1 mono uppercase text-[11px] tracking-widest mb-3">
+              02 / Profile
+            </div>
+            <h2 className="display text-5xl sm:text-7xl text-bone">
+              <SplitText text="THE HUMAN" />
+              <br />
+              <SplitText text="BIT." delay={0.15} className="bg-ink text-neon px-3 inline-block" />
+            </h2>
+          </div>
+          <p className="mono text-sm uppercase tracking-widest max-w-sm text-bone">
+            Resume in three paragraphs and a brag wall. No fluff.
+          </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-12 items-center">
-          {/* Content */}
+        <div className="grid lg:grid-cols-[1.3fr_1fr] gap-8">
           <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            animate={isInView ? "visible" : "hidden"}
-            className="space-y-6"
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.5 }}
+            className="brutal p-6 sm:p-8"
           >
-            <motion.p variants={itemVariants} className="text-lg text-slate-600 dark:text-slate-300 leading-relaxed">
-              A results-driven <span className="font-semibold text-slate-900 dark:text-white">Engineering Manager / Technical Delivery Manager</span> with 
-              9+ years of experience delivering enterprise-scale digital platforms across 
-              e-commerce, retail, travel, and content ecosystems.
-            </motion.p>
+            <p className="text-lg sm:text-xl leading-relaxed">
+              I&apos;m a results-driven{" "}
+              <strong className="bg-neon border-2 border-ink px-1.5">Engineering Manager / Technical Delivery Manager</strong>{" "}
+              with {yoe}+ years delivering enterprise-scale digital platforms across e-commerce,
+              retail, travel, and content ecosystems.
+            </p>
+            <p className="mt-5 text-lg sm:text-xl leading-relaxed">
+              I lead <strong>cross-functional teams of 20+ engineers</strong>, own end-to-end
+              delivery, and drive scalable frontend architectures using{" "}
+              <span className="mono bg-bone border-2 border-ink px-1.5">Next.js</span>{" "}
+              <span className="mono bg-bone border-2 border-ink px-1.5">React</span>{" "}
+              <span className="mono bg-bone border-2 border-ink px-1.5">AEM</span>{" "}
+              and <span className="mono bg-bone border-2 border-ink px-1.5">Magento</span>.
+            </p>
+            <p className="mt-5 text-lg sm:text-xl leading-relaxed">
+              Currently at <strong>PwC India</strong> as Manager — combining technical
+              leadership, delivery, stakeholder engagement, and hands-on engineering.
+              Multi-country rollouts and global clients.
+            </p>
 
-            <motion.p variants={itemVariants} className="text-lg text-slate-600 dark:text-slate-300 leading-relaxed">
-              Proven expertise in leading <span className="font-semibold text-slate-900 dark:text-white">cross-functional teams (20+ engineers)</span>, 
-              owning end-to-end delivery, and driving scalable frontend architectures using 
-              Next.js, React, Adobe Experience Manager (AEM), and Magento.
-            </motion.p>
-
-            <motion.p variants={itemVariants} className="text-lg text-slate-600 dark:text-slate-300 leading-relaxed">
-              Currently at <span className="font-semibold text-slate-900 dark:text-white">PwC India</span> as Manager, 
-              combining technical leadership, delivery management, stakeholder engagement, and 
-              hands-on engineering with experience supporting multi-country rollouts and global clients.
-            </motion.p>
-
-            <motion.div variants={itemVariants} className="pt-4">
-              <h3 className="font-semibold text-slate-900 dark:text-white mb-3">
-                Core Competencies
-              </h3>
-              <ul className="grid grid-cols-2 gap-2 text-slate-600 dark:text-slate-300">
-                {['Engineering Management', 'Technical Delivery', 'Agile/Scrum', 'Stakeholder Management', 'Team Mentoring', 'Architecture Reviews'].map((item, i) => (
+            <div className="mt-8">
+              <div className="mono uppercase text-[11px] tracking-widest mb-3">Core competencies</div>
+              <ul className="flex flex-wrap gap-2">
+                {competencies.map((c, i) => (
                   <motion.li
-                    key={i}
-                    initial={{ opacity: 0, x: -10 }}
-                    animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -10 }}
-                    transition={{ delay: 0.5 + i * 0.1 }}
-                    className="flex items-center gap-2"
+                    key={c}
+                    initial={{ opacity: 0, y: 10, rotate: -2 }}
+                    whileInView={{ opacity: 1, y: 0, rotate: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.05 }}
+                    whileHover={{ rotate: 3, scale: 1.06 }}
+                    className="bg-bone border-[2.5px] border-ink px-3 py-1.5 text-sm font-semibold cursor-default"
                   >
-                    <span className="w-1.5 h-1.5 bg-slate-900 dark:bg-white rounded-full"></span>
-                    {item}
+                    {c}
                   </motion.li>
                 ))}
               </ul>
-            </motion.div>
+            </div>
+          </motion.div>
 
-            {/* Certifications */}
-            <motion.div variants={itemVariants} className="pt-4">
-              <h3 className="font-semibold text-slate-900 dark:text-white mb-3">
-                Certifications
-              </h3>
-              <ul className="space-y-2 text-slate-600 dark:text-slate-300 text-sm md:text-base">
-                <li className="flex items-start gap-2">
-                  <span className="w-1.5 h-1.5 bg-blue-500 rounded-full mt-2 shrink-0"></span>
-                  <span><strong>Adobe Certified Expert</strong> – Commerce Frontend Developer (2023)</span>
+          <div className="space-y-6">
+            <div className="grid grid-cols-2 gap-5">
+              {stats.map((s, i) => (
+                <motion.div
+                  key={s.label}
+                  initial={{ scale: 0.6, rotate: s.tilt + 10, opacity: 0, y: 30 }}
+                  whileInView={{ scale: 1, rotate: s.tilt, opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-80px" }}
+                  transition={{ type: "spring", stiffness: 200, damping: 16, delay: i * 0.08 }}
+                  whileHover={{ rotate: 0, scale: 1.05 }}
+                  className={`${s.bg} ${s.text} border-[3px] border-ink chunk-lg p-5 aspect-square flex flex-col justify-between`}
+                >
+                  <div className="mono uppercase text-[10px] tracking-widest opacity-80">stat</div>
+                  <div>
+                    <div className="display text-5xl sm:text-6xl leading-none">
+                      <CountUp to={s.n} suffix={s.suffix} />
+                    </div>
+                    <div className="mono uppercase text-[10px] tracking-widest mt-2">{s.label}</div>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="brutal p-5"
+            >
+              <div className="flex items-center gap-2 mb-3">
+                <span className="bg-canvas text-bone border-[2.5px] border-ink p-1.5">
+                  <Award className="w-4 h-4" />
+                </span>
+                <div className="mono uppercase text-[11px] tracking-widest">Certified</div>
+              </div>
+              <ul className="space-y-2 text-sm">
+                <li className="flex gap-2">
+                  <span className="w-2 h-2 bg-canvas mt-2 shrink-0 border border-ink" />
+                  <span><strong>Adobe Certified Expert</strong> — Commerce Frontend Developer · 2023</span>
                 </li>
-                <li className="flex items-start gap-2">
-                  <span className="w-1.5 h-1.5 bg-blue-500 rounded-full mt-2 shrink-0"></span>
-                  <span><strong>Adobe Certified Professional</strong> – Commerce Business Practitioner (2023)</span>
+                <li className="flex gap-2">
+                  <span className="w-2 h-2 bg-ink mt-2 shrink-0 border border-ink" />
+                  <span><strong>Adobe Certified Professional</strong> — Commerce Business Practitioner · 2023</span>
                 </li>
               </ul>
             </motion.div>
 
-            {/* Education */}
-            <motion.div variants={itemVariants} className="pt-2">
-              <h3 className="font-semibold text-slate-900 dark:text-white mb-3">
-                Education
-              </h3>
-              <p className="text-slate-600 dark:text-slate-300">
-                <strong>Bachelor of Engineering</strong> – Electronics and Communication Engineering<br />
-                <span className="text-sm text-slate-500 dark:text-slate-400">St. Xavier&apos;s Catholic College of Engineering | 2015</span>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="brutal p-5"
+            >
+              <div className="flex items-center gap-2 mb-3">
+                <span className="bg-ink text-neon border-[2.5px] border-ink p-1.5">
+                  <GraduationCap className="w-4 h-4" />
+                </span>
+                <div className="mono uppercase text-[11px] tracking-widest">Schooled</div>
+              </div>
+              <p className="text-sm">
+                <strong>B.E. — Electronics & Communication Engineering</strong>
+                <br />
+                <span className="opacity-70">St. Xavier&apos;s Catholic College of Engineering · 2015</span>
               </p>
             </motion.div>
-          </motion.div>
-
-          {/* Stats */}
-          <div className="grid grid-cols-2 gap-4 md:gap-6">
-            {highlights.map((item, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
-                transition={{ duration: 0.5, delay: 0.2 + index * 0.1 }}
-                whileHover={{ scale: 1.05, transition: { duration: 0.2 } }}
-                className="bg-slate-50 dark:bg-slate-800 p-4 md:p-8 rounded-xl text-center cursor-default group hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors"
-              >
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={isInView ? { opacity: 1 } : { opacity: 0 }}
-                  transition={{ duration: 0.5, delay: 0.4 + index * 0.1 }}
-                  className="text-3xl md:text-5xl font-bold text-slate-900 dark:text-white mb-1 md:mb-2"
-                >
-                  {item.number}
-                </motion.div>
-                <div className="text-sm md:text-base text-slate-600 dark:text-slate-400 font-medium group-hover:text-slate-900 dark:group-hover:text-white transition-colors">
-                  {item.label}
-                </div>
-              </motion.div>
-            ))}
           </div>
         </div>
-
-        {/* Work Authorization */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-          transition={{ duration: 0.5, delay: 0.6 }}
-          className="mt-8 text-center"
-        >
-          <div className="inline-flex flex-wrap justify-center items-center gap-2 px-4 py-2 md:px-6 md:py-3 bg-slate-100 dark:bg-slate-800 rounded-full">
-            <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse shrink-0"></span>
-            <span className="text-sm md:text-base text-slate-700 dark:text-slate-300 font-medium text-center">
-              Open to Relocation | Visa Sponsorship | Remote
-            </span>
-          </div>
-        </motion.div>
       </div>
     </section>
   );

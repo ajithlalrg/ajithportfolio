@@ -1,95 +1,98 @@
-'use client';
+"use client";
 
-import { motion } from 'framer-motion';
-import { Linkedin, Github, Mail } from 'lucide-react';
+import { Linkedin, Github, Mail, ArrowUp } from "lucide-react";
+import Marquee from "./Marquee";
+
+const socials = [
+  { icon: Linkedin, href: "https://www.linkedin.com/in/ajithlalrg/", label: "LinkedIn", bg: "bg-canvas", text: "text-bone" },
+  { icon: Github, href: "https://github.com/ajithlalrg", label: "GitHub", bg: "bg-bone", text: "text-ink" },
+  { icon: Mail, href: "mailto:ajithlaldev@gmail.com", label: "Email", bg: "bg-neon", text: "text-ink" },
+];
 
 export default function Footer() {
-  const currentYear = new Date().getFullYear();
-
-  const socialLinks = [
-    {
-      icon: Linkedin,
-      href: 'https://www.linkedin.com/in/ajithlalrg/',
-      label: 'LinkedIn',
-    },
-    {
-      icon: Github,
-      href: 'https://github.com/ajithlalrg',
-      label: 'GitHub',
-    },
-    {
-      icon: Mail,
-      href: 'mailto:ajithlaldev@gmail.com',
-      label: 'Email',
-    },
-  ];
+  const year = new Date().getFullYear();
 
   return (
-    <footer className="bg-slate-900 dark:bg-black text-white py-12" role="contentinfo" aria-label="Site footer">
-      <div className="max-w-6xl mx-auto px-6">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-          {/* Name & Copyright */}
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
-            viewport={{ once: true }}
-            className="text-center md:text-left"
-            itemScope
-            itemType="https://schema.org/Person"
-          >
-            <p className="font-bold text-lg" itemProp="name">AJITH LAL R</p>
-            <p className="text-slate-400 text-sm mt-1" itemProp="jobTitle">
-              Engineering Manager | Technical Delivery Manager
-            </p>
-          </motion.div>
+    <footer className="relative border-t-[3px] border-ink bg-ink text-bone">
+      <div className="bg-canvas text-bone py-4 border-b-[3px] border-ink overflow-hidden">
+        <Marquee
+          items={[
+            <span key="a" className="display text-3xl">AJITH LAL R</span>,
+            <span key="b" className="display text-3xl text-neon">✦</span>,
+            <span key="c" className="display text-3xl">OPEN FOR HIRES</span>,
+            <span key="d" className="display text-3xl text-ink">✦</span>,
+            <span key="e" className="display text-3xl">CHENNAI · REMOTE · WORLD</span>,
+            <span key="f" className="display text-3xl text-neon">✦</span>,
+          ]}
+          separator={<span className="mx-6 display text-3xl">/</span>}
+        />
+      </div>
 
-          {/* Social Links */}
-          <div className="flex items-center gap-4">
-            {socialLinks.map((link, index) => {
-              const IconComponent = link.icon;
+      <div className="bg-bone text-ink py-3 border-b-[3px] border-ink overflow-hidden">
+        <Marquee
+          reverse
+          items={[
+            <span key="a" className="display text-2xl">NEXT.JS</span>,
+            <span key="b" className="display text-2xl text-canvas">★</span>,
+            <span key="c" className="display text-2xl">REACT</span>,
+            <span key="d" className="display text-2xl text-canvas">★</span>,
+            <span key="e" className="display text-2xl">AEM</span>,
+            <span key="f" className="display text-2xl text-canvas">★</span>,
+            <span key="g" className="display text-2xl">MAGENTO</span>,
+            <span key="h" className="display text-2xl text-canvas">★</span>,
+            <span key="i" className="display text-2xl">TYPESCRIPT</span>,
+            <span key="j" className="display text-2xl text-canvas">★</span>,
+          ]}
+          separator={<span className="mx-6 display text-2xl">/</span>}
+        />
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12">
+        <div className="grid sm:grid-cols-2 gap-8 items-center">
+          <div>
+            <div className="display text-4xl sm:text-6xl">AJITH/LAL R.</div>
+            <p className="mono uppercase text-[11px] tracking-widest mt-2 opacity-80">
+              Engineering Manager · Technical Delivery Manager
+            </p>
+            <p className="mt-4 text-sm max-w-md opacity-80">
+              Shipping enterprise-grade things since 2016. Reach me through the channels →
+              I&apos;m usually quick.
+            </p>
+          </div>
+
+          <div className="flex sm:justify-end items-center gap-3">
+            {socials.map((s, i) => {
+              const Icon = s.icon;
               return (
-                <motion.a
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.3, delay: 0.1 * index }}
-                  viewport={{ once: true }}
-                  whileHover={{ scale: 1.1, y: -2 }}
-                  whileTap={{ scale: 0.95 }}
-                  href={link.href}
-                  target={link.href.startsWith('http') ? '_blank' : undefined}
-                  rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                  aria-label={link.label}
-                  className="cursor-pointer p-2 bg-slate-800 hover:bg-slate-700 rounded-lg transition-colors duration-200"
+                <a
+                  key={s.label}
+                  href={s.href}
+                  aria-label={s.label}
+                  data-cursor="active"
+                  target={s.href.startsWith("http") ? "_blank" : undefined}
+                  rel={s.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                  className={`${s.bg} ${s.text} border-[3px] border-bone w-12 h-12 inline-flex items-center justify-center transition-transform hover:-translate-y-1 hover:rotate-6`}
+                  style={{ transform: `rotate(${(i - 1) * 4}deg)` }}
                 >
-                  <IconComponent className="w-5 h-5" />
-                </motion.a>
+                  <Icon className="w-5 h-5" />
+                </a>
               );
             })}
+            <a
+              href="#top"
+              aria-label="Back to top"
+              data-cursor="active"
+              className="bg-canvas text-bone border-[3px] border-bone w-12 h-12 inline-flex items-center justify-center rotate-3 hover:-translate-y-1 transition-transform"
+            >
+              <ArrowUp className="w-5 h-5" />
+            </a>
           </div>
         </div>
 
-        {/* Divider */}
-        <motion.div
-          initial={{ scaleX: 0 }}
-          whileInView={{ scaleX: 1 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="border-t border-slate-800 my-8 origin-left"
-        />
-
-        {/* Bottom Row */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-          viewport={{ once: true }}
-          className="flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-slate-400"
-        >
-          <p>© {currentYear} Ajith Lal R. All rights reserved.</p>
-          <p>Built with React, TypeScript & Tailwind CSS</p>
-        </motion.div>
+        <div className="mt-10 pt-6 border-t border-bone/20 flex flex-col sm:flex-row justify-between gap-3 mono uppercase text-[11px] tracking-widest opacity-70">
+          <p>© {year} Ajith Lal R · All rights reserved.</p>
+          <p>Built loud with Next.js · Tailwind · Framer Motion</p>
+        </div>
       </div>
     </footer>
   );

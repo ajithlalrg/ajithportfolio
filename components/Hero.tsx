@@ -1,158 +1,276 @@
-'use client';
+"use client";
 
-import { useRouter } from 'next/navigation';
-import { motion } from 'framer-motion';
-import { MapPin, ChevronDown } from 'lucide-react';
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
+import { ArrowDown, MapPin, Sparkles } from "lucide-react";
+import Marquee from "./Marquee";
+import Magnetic from "./Magnetic";
+import SplitText from "./SplitText";
+import CycleWord from "./CycleWord";
+import { yearsOfExperience } from "@/lib/yoe";
 
 export default function Hero() {
-  const router = useRouter();
-
-  const scrollToProjects = () => {
-    const element = document.getElementById('projects');
-    element?.scrollIntoView({ behavior: 'smooth' });
-  };
-
-  const scrollToAbout = () => {
-    const element = document.getElementById('about');
-    element?.scrollIntoView({ behavior: 'smooth' });
-  };
+  const ref = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
+  const y1 = useTransform(scrollYProgress, [0, 1], [0, -120]);
+  const y2 = useTransform(scrollYProgress, [0, 1], [0, -80]);
+  const y3 = useTransform(scrollYProgress, [0, 1], [0, -200]);
+  const yoe = yearsOfExperience();
 
   return (
     <section
-      id="hero"
-      aria-label="Introduction"
-      itemScope
-      itemType="https://schema.org/Person"
-      className="min-h-screen flex items-center justify-center bg-linear-to-br from-slate-50 via-white to-slate-100 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900 relative overflow-hidden"
+      ref={ref}
+      id="top"
+      className="relative pt-32 pb-12 sm:pt-40 sm:pb-16 px-4 sm:px-6 overflow-hidden"
     >
-      {/* Background decoration */}
-      <div className="absolute inset-0 overflow-hidden" aria-hidden="true">
-        <div className="absolute -top-40 -right-40 w-80 h-80 bg-blue-500/10 rounded-full blur-3xl" />
-        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-purple-500/10 rounded-full blur-3xl" />
-      </div>
+      {/* drifting background blobs */}
+      <motion.div
+        aria-hidden
+        style={{ y: y3 }}
+        className="absolute -top-20 -left-20 w-[420px] h-[420px] rounded-full opacity-50 blur-[80px] bg-canvas-hi pointer-events-none"
+      />
+      <motion.div
+        aria-hidden
+        style={{ y: y2 }}
+        className="absolute top-32 -right-24 w-[360px] h-[360px] rounded-full opacity-40 blur-[100px] bg-blood pointer-events-none"
+      />
+      <div className="absolute inset-0 dot-grid opacity-30 pointer-events-none" aria-hidden />
 
-      <div className="max-w-4xl mx-auto px-6 py-20 text-center relative z-10">
-        {/* Badge */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 dark:bg-slate-800 rounded-full text-sm text-slate-600 dark:text-slate-400 mb-6"
-          role="status"
-          aria-label="Currently open to job opportunities"
-        >
-          <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse" aria-hidden="true" />
-          Open to opportunities
-        </motion.div>
+      {/* RED ALERT bar */}
+      <motion.div
+        initial={{ scaleX: 0 }}
+        animate={{ scaleX: 1 }}
+        transition={{ duration: 0.6, delay: 0.1, ease: [0.2, 0.9, 0.2, 1] }}
+        className="absolute top-24 left-0 right-0 origin-left h-7 stripes-warn pointer-events-none"
+      />
 
-        {/* Name */}
-        <motion.h1
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          className="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 dark:text-white mb-4 tracking-tight"
-          itemProp="name"
-        >
-          AJITH LAL R
-        </motion.h1>
-
-        {/* Title */}
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className="text-xl md:text-2xl font-medium text-slate-700 dark:text-slate-300 mb-4"
-          itemProp="jobTitle"
-        >
-          Engineering Manager | Technical Delivery Manager
-        </motion.h2>
-
-        {/* Location */}
-        <motion.address
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-          className="flex items-center justify-center gap-2 text-slate-600 dark:text-slate-400 mb-8 not-italic"
-          itemProp="address"
-          itemScope
-          itemType="https://schema.org/PostalAddress"
-        >
-          <MapPin className="w-4 h-4" aria-hidden="true" />
-          <span>
-            <span itemProp="addressLocality">Chennai</span>, <span itemProp="addressCountry">India</span>
-          </span>
-        </motion.address>
-
-        {/* Tagline */}
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-          className="text-lg md:text-xl text-slate-600 dark:text-slate-300 max-w-2xl mx-auto mb-10 leading-relaxed"
-          itemProp="description"
-        >
-          Leading enterprise-scale digital platforms across e-commerce, retail, travel, and content ecosystems for global clients.
-        </motion.p>
-
-        {/* CTA Buttons */}
-        <motion.nav
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.5 }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-4"
-          aria-label="Primary actions"
-        >
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            onClick={scrollToProjects}
-            className="cursor-pointer px-8 py-3 bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-medium rounded-lg hover:bg-slate-800 dark:hover:bg-slate-100 transition-colors duration-200 w-full sm:w-auto shadow-lg shadow-slate-900/20 dark:shadow-white/20"
+      <div className="relative max-w-7xl mx-auto pt-8">
+        {/* status row */}
+        <div className="flex flex-wrap items-center gap-3 mb-10">
+          <motion.span
+            initial={{ y: -20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.4 }}
+            className="relative inline-flex items-center gap-2 bg-neon text-ink border-[3px] border-ink chunk px-3 py-1.5 mono text-[11px] uppercase tracking-widest"
           >
-            View Projects
-          </motion.button>
-          <motion.a
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            href="/resume.pdf"
-            download="Ajith_Lal_R_Resume.pdf"
-            className="cursor-pointer px-8 py-3 border-2 border-slate-900 dark:border-white text-slate-900 dark:text-white font-medium rounded-lg hover:bg-slate-900 hover:text-white dark:hover:bg-white dark:hover:text-slate-900 transition-colors duration-200 w-full sm:w-auto text-center"
-            aria-label="Download resume as PDF"
+            <span className="relative inline-flex w-2.5 h-2.5 bg-canvas border border-ink siren rounded-full" />
+            Open for hires
+          </motion.span>
+          <motion.span
+            initial={{ y: -20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.5 }}
+            className="inline-flex items-center gap-2 bg-bone text-ink border-[3px] border-ink chunk px-3 py-1.5 mono text-[11px] uppercase tracking-widest"
           >
-            Download Resume
-          </motion.a>
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            onClick={() => router.push('/dev-city')}
-            className="cursor-pointer px-8 py-3 bg-linear-to-r from-cyan-500 to-purple-500 text-white font-medium rounded-lg hover:from-cyan-400 hover:to-purple-400 transition-all duration-200 w-full sm:w-auto shadow-lg shadow-cyan-500/20"
+            <MapPin className="w-3.5 h-3.5" /> Chennai · Remote
+          </motion.span>
+          <motion.span
+            initial={{ y: -20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.6 }}
+            className="inline-flex items-center gap-2 bg-ink text-bone border-[3px] border-ink chunk px-3 py-1.5 mono text-[11px] uppercase tracking-widest"
           >
-            Explore Dev City
-          </motion.button>
-        </motion.nav>
+            <Sparkles className="w-3.5 h-3.5 text-neon" /> 9+ yrs · 20+ shipped
+          </motion.span>
+        </div>
 
-        {/* Scroll indicator */}
-        <motion.button
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 1 }}
-          onClick={scrollToAbout}
-          className="mt-16 cursor-pointer group"
-          aria-label="Scroll down to about section"
-        >
-          <motion.div
-            animate={{ y: [0, 8, 0] }}
-            transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-            aria-hidden="true"
-          >
-            <ChevronDown className="w-8 h-8 mx-auto text-slate-400 group-hover:text-slate-600 dark:group-hover:text-slate-200 transition-colors" />
+        <div className="grid lg:grid-cols-[1.45fr_1fr] gap-10 lg:gap-12 items-start">
+          {/* LEFT */}
+          <motion.div style={{ y: y1 }}>
+            <h1 className="display text-[16vw] sm:text-[12vw] lg:text-[9.5vw] xl:text-[10rem] text-bone">
+              <span className="block">
+                <SplitText text="AJITH" />
+              </span>
+              <span className="block">
+                <SplitText text="LAL R." delay={0.1} />
+              </span>
+              <span className="block mt-2 text-ink">
+                <span className="mono text-base sm:text-lg align-middle mr-3">/</span>
+                <span className="display text-[10vw] sm:text-[8vw] lg:text-[6vw] xl:text-7xl">
+                  <CycleWord
+                    words={["ENGINEER.", "MANAGER.", "ARCHITECT.", "SHIPPER.", "OPERATOR."]}
+                    interval={1700}
+                  />
+                </span>
+              </span>
+            </h1>
+
+            <motion.p
+              initial={{ y: 24, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 1.2 }}
+              className="mt-8 max-w-xl text-lg sm:text-xl leading-snug text-bone"
+            >
+              I run delivery and architecture for big web platforms. Currently
+              shipping enterprise things at <strong className="text-ink bg-bone px-1.5 border-[2px] border-ink">PwC India</strong> with{" "}
+              <strong className="text-ink bg-neon px-1.5 border-[2px] border-ink">Next.js · React · AEM · Magento</strong>. Lead
+              20+ engineers across e-commerce, retail, travel, and content.
+            </motion.p>
+
+            <motion.div
+              initial={{ y: 24, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 1.35 }}
+              className="mt-8 flex flex-wrap items-center gap-4"
+            >
+              <Magnetic strength={0.45}>
+                <a
+                  href="#projects"
+                  data-cursor="active"
+                  className="group relative inline-flex items-center gap-2 bg-ink text-bone px-7 py-4 border-[3px] border-ink chunk-bone shake-hover"
+                >
+                  <span className="display text-xl tracking-tight">SEE THE WORK</span>
+                  <span className="display text-2xl">→</span>
+                </a>
+              </Magnetic>
+              <Magnetic strength={0.45}>
+                <a
+                  href="#contact"
+                  data-cursor="active"
+                  className="group relative inline-flex items-center gap-2 bg-neon text-ink px-7 py-4 border-[3px] border-ink chunk shake-hover"
+                >
+                  <span className="display text-xl tracking-tight">HIRE ME</span>
+                  <span className="display text-2xl">★</span>
+                </a>
+              </Magnetic>
+              <a
+                href="/resume.pdf"
+                download="Ajith_Lal_R_Resume.pdf"
+                data-cursor="active"
+                className="text-bone mono text-sm underline decoration-[3px] underline-offset-4 hover:text-neon px-2"
+              >
+                or grab résumé.pdf
+              </a>
+            </motion.div>
+
+            <div className="mt-12 flex items-center gap-3 text-bone/85">
+              <ArrowDown className="w-4 h-4 animate-bounce" />
+              <span className="mono text-xs uppercase tracking-widest">Scroll. There&apos;s more damage.</span>
+            </div>
           </motion.div>
-        </motion.button>
+
+          {/* RIGHT — sticker chaos */}
+          <div className="relative h-[440px] sm:h-[520px] lg:h-[600px]">
+            <motion.div
+              initial={{ scale: 0.4, rotate: 22, opacity: 0 }}
+              animate={{ scale: 1, rotate: -6, opacity: 1 }}
+              transition={{ type: "spring", stiffness: 160, damping: 14, delay: 0.3 }}
+              style={{ y: y2 }}
+              className="absolute top-2 right-4 sm:right-8 w-48 h-48 sm:w-60 sm:h-60 bg-ink text-bone border-[3px] border-ink chunk-lg flex flex-col items-center justify-center"
+            >
+              <span className="display text-7xl sm:text-8xl text-neon">{yoe}+</span>
+              <span className="mono uppercase text-[10px] tracking-widest">years shipping</span>
+              <span className="absolute -top-3 -left-3 bg-neon text-ink border-[3px] border-ink px-2 py-0.5 mono text-[10px] uppercase tracking-widest -rotate-6">
+                ★ certified
+              </span>
+            </motion.div>
+
+            <motion.div
+              initial={{ scale: 0.4, rotate: -22, opacity: 0 }}
+              animate={{ scale: 1, rotate: 5, opacity: 1 }}
+              transition={{ type: "spring", stiffness: 160, damping: 14, delay: 0.45 }}
+              style={{ y: y3 }}
+              className="absolute top-44 sm:top-52 left-2 sm:left-6 w-44 bg-bone border-[3px] border-ink chunk p-3"
+            >
+              <div className="stripes-warn h-2.5 mb-2" />
+              <div className="display text-3xl leading-none">20+</div>
+              <div className="mono uppercase text-[10px] tracking-widest mt-1">engineers led</div>
+            </motion.div>
+
+            <motion.div
+              initial={{ scale: 0.3, rotate: 30, opacity: 0 }}
+              animate={{ scale: 1, rotate: -12, opacity: 1 }}
+              transition={{ type: "spring", stiffness: 160, damping: 14, delay: 0.6 }}
+              className="absolute bottom-4 right-2 sm:right-12 w-44 h-44 bg-bone border-[3px] border-ink chunk-lg rounded-full flex flex-col items-center justify-center text-center relative overflow-hidden"
+            >
+              <div className="absolute inset-0 spin-slow opacity-90 pointer-events-none">
+                <svg viewBox="0 0 100 100" className="w-full h-full">
+                  <defs>
+                    <path id="circ" d="M 50,50 m -36,0 a 36,36 0 1,1 72,0 a 36,36 0 1,1 -72,0" />
+                  </defs>
+                  <text fontSize="9.5" letterSpacing="2" className="mono fill-ink">
+                    <textPath href="#circ">
+                      ★ ADOBE CERTIFIED EXPERT · 2023 · ★ ADOBE CERTIFIED EXPERT · 2023 ·
+                    </textPath>
+                  </text>
+                </svg>
+              </div>
+              <span className="display text-2xl leading-none text-canvas">ADOBE</span>
+              <span className="display text-base leading-tight text-canvas">CERTIFIED</span>
+            </motion.div>
+
+            <motion.div
+              initial={{ scale: 0.3, rotate: -30, opacity: 0 }}
+              animate={{ scale: 1, rotate: 8, opacity: 1 }}
+              transition={{ type: "spring", stiffness: 160, damping: 14, delay: 0.75 }}
+              className="absolute bottom-32 sm:bottom-44 left-10 sm:left-20 bg-canvas-hi text-bone border-[3px] border-ink chunk px-3 py-2"
+            >
+              <span className="mono uppercase text-[11px] tracking-widest">@ pwc india</span>
+            </motion.div>
+
+            {/* arrow doodle that draws */}
+            <svg
+              aria-hidden
+              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 sm:w-40 text-bone rotate-12 opacity-90"
+              viewBox="0 0 100 60"
+              fill="none"
+            >
+              <motion.path
+                initial={{ pathLength: 0 }}
+                animate={{ pathLength: 1 }}
+                transition={{ duration: 1.4, delay: 0.9, ease: "easeInOut" }}
+                d="M5 30 C25 5, 60 55, 95 30"
+                stroke="currentColor"
+                strokeWidth="3.5"
+                strokeLinecap="round"
+              />
+              <motion.path
+                initial={{ pathLength: 0 }}
+                animate={{ pathLength: 1 }}
+                transition={{ duration: 0.4, delay: 1.9 }}
+                d="M85 18 L95 30 L83 38"
+                stroke="currentColor"
+                strokeWidth="3.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </div>
+        </div>
       </div>
-      
-      {/* Hidden SEO content for search engines */}
-      <meta itemProp="url" content="https://ajithlal-red.vercel.app" />
-      <link itemProp="sameAs" href="https://linkedin.com/in/ajithlalr" />
-      <link itemProp="sameAs" href="https://github.com/ajithlalrg" />
+
+      {/* full-bleed marquee */}
+      <div className="relative mt-16 sm:mt-20 mx-[calc(-1*var(--spacing,1rem))]">
+        <div className="bg-ink text-bone py-4 sm:py-5 border-y-[3px] border-ink overflow-hidden">
+          <Marquee
+            items={[
+              <span key="a" className="display text-3xl sm:text-4xl">ENGINEERING MANAGER</span>,
+              <span key="b" className="display text-3xl sm:text-4xl text-canvas">/</span>,
+              <span key="c" className="display text-3xl sm:text-4xl">TECHNICAL DELIVERY</span>,
+              <span key="d" className="display text-3xl sm:text-4xl text-neon">/</span>,
+              <span key="e" className="display text-3xl sm:text-4xl">FRONTEND ARCHITECT</span>,
+              <span key="f" className="display text-3xl sm:text-4xl text-canvas">/</span>,
+              <span key="g" className="display text-3xl sm:text-4xl">NEXT.JS · REACT · AEM · MAGENTO</span>,
+              <span key="h" className="display text-3xl sm:text-4xl text-neon">/</span>,
+            ]}
+            separator={<span className="mx-6 display text-3xl sm:text-4xl">★</span>}
+          />
+        </div>
+        <div className="bg-bone text-ink py-3 border-b-[3px] border-ink overflow-hidden">
+          <Marquee
+            reverse
+            items={[
+              <span key="a" className="display text-2xl">CHENNAI · INDIA</span>,
+              <span key="b" className="display text-2xl text-canvas">★</span>,
+              <span key="c" className="display text-2xl">PWC INDIA · MANAGER</span>,
+              <span key="d" className="display text-2xl text-canvas">★</span>,
+              <span key="e" className="display text-2xl">ADOBE CERTIFIED EXPERT</span>,
+              <span key="f" className="display text-2xl text-canvas">★</span>,
+            ]}
+            separator={<span className="mx-6 display text-2xl">/</span>}
+          />
+        </div>
+      </div>
     </section>
   );
 }

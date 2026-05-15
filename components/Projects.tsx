@@ -1,283 +1,276 @@
-'use client';
+"use client";
 
-import { motion, useInView } from 'framer-motion';
-import { useRef } from 'react';
-import { Layers } from 'lucide-react';
+import { motion } from "framer-motion";
+import TiltCard from "./TiltCard";
+import Marquee from "./Marquee";
+import SplitText from "./SplitText";
 
-interface Project {
+type Category = "e-commerce" | "enterprise" | "marketing" | "branding";
+
+type Project = {
   name: string;
   client: string;
   role: string;
   problem: string;
   contributions: string[];
   technologies: string[];
-  category: 'e-commerce' | 'enterprise' | 'marketing' | 'branding';
-}
+  category: Category;
+};
+
+const categoryStyle: Record<Category, { bg: string; text: string; label: string; tilt: number }> = {
+  enterprise: { bg: "bg-ink", text: "text-bone", label: "ENTERPRISE", tilt: -1.5 },
+  "e-commerce": { bg: "bg-canvas", text: "text-bone", label: "E-COMMERCE", tilt: 1.5 },
+  marketing: { bg: "bg-neon", text: "text-ink", label: "MARKETING", tilt: -2 },
+  branding: { bg: "bg-canvas-hi", text: "text-bone", label: "BRANDING", tilt: 2 },
+};
+
+const projects: Project[] = [
+  {
+    name: "RE-Bridge (RE-Market-Place)",
+    client: "Royal Enfield",
+    role: "Engineering Lead / Technical Delivery Manager",
+    problem:
+      "Centralised dealer analytics, business KPIs, and per-user app access with secure auth — at enterprise scale.",
+    contributions: [
+      "Designed and implemented SAML 2.0 SSO with IdP integration and JWT-based session management",
+      "Delivered Power BI Embedded analytics with Row-Level Security for personalised dashboards",
+      "Integrated MyApps for single-click access to authorised enterprise applications",
+    ],
+    technologies: ["Next.js", "React", "TypeScript", "Redux Toolkit", "SAML 2.0", "JWT", "Power BI", "Tailwind"],
+    category: "enterprise",
+  },
+  {
+    name: "Global E-commerce Web Portal",
+    client: "Royal Enfield",
+    role: "Tech Lead | Next.js Developer",
+    problem: "Scalable, SEO-optimised e-commerce platform with dynamic product flows and personalised experiences.",
+    contributions: [
+      "Led frontend delivery of a scalable, SEO-optimised commerce platform",
+      "Built dynamic PLP/PDP flows, personalised accounts, and responsive checkout journeys",
+      "Integrated 360° product visualisation; optimised perf with SSR and GraphQL",
+    ],
+    technologies: ["Next.js", "React", "Tailwind", "Redux", "GraphQL", "JIRA"],
+    category: "e-commerce",
+  },
+  {
+    name: "Digital Jewellery Savings Platform",
+    client: "Aditya Birla Jewellery",
+    role: "Tech Lead | AEM Frontend",
+    problem: "Secure e-commerce and savings platform with parent–child portal architecture and KYC onboarding.",
+    contributions: [
+      "Delivered parent–child portal architecture with shared identity",
+      "Implemented SSO, Aadhaar/PAN KYC, dashboards, and payments",
+      "Improved SEO/perf via SSR and optimised GraphQL",
+    ],
+    technologies: ["AEM (React on AEM)", "JavaScript", "Redux", "GraphQL", "REST", "Bootstrap 5"],
+    category: "e-commerce",
+  },
+  {
+    name: "Garden Vareli E-commerce",
+    client: "Garden Vareli",
+    role: "Tech Lead | Next.js Developer",
+    problem: "Modern, responsive e-commerce frontend to enhance discovery and online visibility.",
+    contributions: [
+      "Reusable UI components, API integrations, and global state management",
+      "Smooth browsing and purchasing across all devices",
+      "Responsive design tuned for every screen size",
+    ],
+    technologies: ["Next.js", "Tailwind", "JavaScript", "Redux", "GraphQL"],
+    category: "e-commerce",
+  },
+  {
+    name: "GKB Optical E-commerce",
+    client: "GKB Optical",
+    role: "Tech Lead | Next.js Developer",
+    problem: "Scalable eyewear e-commerce supporting large catalogues with optimal performance.",
+    contributions: [
+      "Responsive UI components and GraphQL APIs for product/inventory data",
+      "Improved performance, stability, and omnichannel UX",
+      "Scaled to support large catalogues",
+    ],
+    technologies: ["Next.js", "Tailwind", "JavaScript", "Redux", "GraphQL"],
+    category: "e-commerce",
+  },
+  {
+    name: "Calvert & Eaton Vance",
+    client: "Morgan Stanley",
+    role: "AEM Frontend Developer",
+    problem: "Component-driven microsite architecture with subscription management for a marketing platform.",
+    contributions: [
+      "Component-driven microsite arch using JSON-based rendering in AEM",
+      "Subscription centre + enhanced product and resource pages",
+      "Partnered with marketing and business on campaign alignment",
+    ],
+    technologies: ["Adobe Experience Manager", "React", "JavaScript", "HTML", "CSS"],
+    category: "marketing",
+  },
+  {
+    name: "Firststop Multi-Country",
+    client: "Bridgestone",
+    role: "Tech Lead | AEM Frontend",
+    problem: "Multi-country digital commerce and marketing rollout with shared global components.",
+    contributions: [
+      "Multi-country rollout architecture with shared global components",
+      "Reusable React components + Magento 2 for commerce and bookings",
+      "Adobe Analytics for behaviour and conversion tracking",
+    ],
+    technologies: ["AEM", "React on AEM", "JavaScript", "REST", "Magento 2", "Adobe Analytics"],
+    category: "enterprise",
+  },
+  {
+    name: "Corporate Branding",
+    client: "Bekaert Dramix Constructions",
+    role: "Tech Lead | AEM Frontend",
+    problem: "Responsive branding website showcasing products, case studies, and technical resources.",
+    contributions: [
+      "Custom AEM components and lead-gen forms via REST APIs",
+      "SEO, performance, and engagement via analytics-driven optimisation",
+      "Responsive branding site with case study modules",
+    ],
+    technologies: ["AEM", "HTML5", "CSS3", "JavaScript", "REST", "Adobe Analytics"],
+    category: "branding",
+  },
+  {
+    name: "OMA Living E-commerce",
+    client: "OMA Living",
+    role: "Tech Lead | Magento Frontend",
+    problem: "Responsive Magento 2 storefront supporting large product catalogues and advanced filtering.",
+    contributions: [
+      "Optimised frontend performance and UI interactions",
+      "Integrated GA4 — contributed to 30% lift in online sales post-launch",
+      "Responsive storefront with advanced filtering",
+    ],
+    technologies: ["Magento 2", "HTML5", "CSS3", "JavaScript", "jQuery", "GA4"],
+    category: "e-commerce",
+  },
+  {
+    name: "CASA OMA Booking Platform",
+    client: "CASA OMA",
+    role: "Tech Lead | Next.js Developer",
+    problem: "Premium branding site focused on consultation bookings with headless CMS integration.",
+    contributions: [
+      "Headless Magento 2 for content and backend management",
+      "Custom appointment booking flow",
+      "Performance tuned across devices",
+    ],
+    technologies: ["Next.js", "Magento 2 (Headless)", "HTML5", "CSS3"],
+    category: "branding",
+  },
+  {
+    name: "ITC Brand Websites",
+    client: "ITC Limited",
+    role: "AEM Frontend Developer | Tech Lead",
+    problem: "Multiple AEM-based brand websites with interactive and gamified experiences.",
+    contributions: [
+      "Led frontend delivery for select brands (Dark Fantasy, Yippee, Aashirvaad, B Natural, Bingo)",
+      "Reusable components improved engagement, SEO, and authoring efficiency",
+      "Coordinated designers, content, backend, and QA",
+    ],
+    technologies: ["Adobe Experience Manager", "React.js", "JavaScript", "HTML5", "CSS3"],
+    category: "marketing",
+  },
+];
 
 export default function Projects() {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
-
-  const projects: Project[] = [
-    {
-      name: 'RE-Bridge (RE-Market-Place)',
-      client: 'Royal Enfield',
-      role: 'Engineering Lead / Technical Delivery Manager',
-      problem: 'Royal Enfield needed an enterprise platform centralising dealer analytics, business KPIs, and user-specific application access with secure authentication.',
-      contributions: [
-        'Designed and implemented SAML 2.0–based SSO with IdP integration and secure JWT-based session management',
-        'Delivered Power BI Embedded analytics with Row-Level Security (RLS) for personalised dashboards',
-        'Integrated MyApps for single-click access to authorised enterprise applications',
-        'Supported production-ready deployments across Dev, UAT, and Prod environments',
-      ],
-      technologies: ['Next.js', 'React', 'TypeScript', 'Redux Toolkit', 'SAML 2.0', 'JWT', 'Power BI Embedded', 'Tailwind CSS', 'REST APIs'],
-      category: 'enterprise',
-    },
-    {
-      name: 'Global E-commerce Web Portal',
-      client: 'Royal Enfield',
-      role: 'Tech Lead | Next.js Developer',
-      problem: 'Build a scalable, SEO-optimised e-commerce platform with dynamic product flows and personalised user experiences.',
-      contributions: [
-        'Led frontend delivery of a scalable, SEO-optimised e-commerce platform',
-        'Built dynamic PLP/PDP flows, personalised user accounts, and responsive cart/checkout journeys',
-        'Integrated 360° product visualisation and optimised performance using SSR and GraphQL',
-      ],
-      technologies: ['Next.js', 'React', 'Tailwind CSS', 'Redux', 'GraphQL', 'JIRA'],
-      category: 'e-commerce',
-    },
-    {
-      name: 'Digital Jewellery Savings Platform',
-      client: 'Aditya Birla Jewellery',
-      role: 'Tech Lead | AEM Frontend Developer',
-      problem: 'Create a secure e-commerce and savings platform with parent–child portal architecture and KYC-based onboarding.',
-      contributions: [
-        'Delivered a secure e-commerce and savings platform with parent–child portal architecture',
-        'Implemented SSO, KYC-based onboarding (Aadhaar/PAN), dashboards, and payment integrations',
-        'Improved SEO and performance using SSR and optimised GraphQL data fetching',
-      ],
-      technologies: ['AEM (React on AEM)', 'JavaScript', 'Redux', 'GraphQL', 'REST APIs', 'Bootstrap 5', 'JIRA'],
-      category: 'e-commerce',
-    },
-    {
-      name: 'Garden Vareli E-commerce',
-      client: 'Garden Vareli',
-      role: 'Tech Lead | Next.js Developer',
-      problem: 'Build a modern, responsive e-commerce frontend to enhance product discovery and online visibility.',
-      contributions: [
-        'Implemented reusable UI components, API integrations, and global state management',
-        'Delivered a scalable platform supporting smooth browsing and purchasing across devices',
-        'Built responsive design optimised for all screen sizes',
-      ],
-      technologies: ['Next.js', 'Tailwind CSS', 'JavaScript', 'Redux', 'GraphQL', 'JIRA'],
-      category: 'e-commerce',
-    },
-    {
-      name: 'GKB Optical E-commerce',
-      client: 'GKB Optical',
-      role: 'Tech Lead | Next.js Developer',
-      problem: 'Develop a scalable eyewear e-commerce platform supporting large product catalogues with optimal performance.',
-      contributions: [
-        'Built responsive UI components and integrated GraphQL APIs for product and inventory data',
-        'Improved performance, stability, and omnichannel user experience',
-        'Developed a scalable eyewear e-commerce platform supporting large product catalogues',
-      ],
-      technologies: ['Next.js', 'Tailwind CSS', 'JavaScript', 'Redux', 'GraphQL', 'JIRA'],
-      category: 'e-commerce',
-    },
-    {
-      name: 'Calvert & Eaton Vance Platform',
-      client: 'Morgan Stanley',
-      role: 'AEM Frontend Developer',
-      problem: 'Implement component-driven microsite architecture for marketing platform with subscription management.',
-      contributions: [
-        'Implemented component-driven microsite architecture using JSON-based rendering in AEM',
-        'Built a subscription centre and enhanced product and resource pages for usability and performance',
-        'Collaborated with marketing and business teams to align delivery with campaign objectives',
-      ],
-      technologies: ['Adobe Experience Manager', 'React', 'JavaScript', 'HTML', 'CSS', 'REST APIs'],
-      category: 'marketing',
-    },
-    {
-      name: 'Firststop Multi-Country Platform',
-      client: 'Bridgestone',
-      role: 'Tech Lead | AEM Frontend',
-      problem: 'Create a multi-country rollout architecture for digital commerce and marketing with shared global components.',
-      contributions: [
-        'Led a multi-country rollout architecture using AEM with shared global components',
-        'Built reusable React components and integrated Magento 2 for commerce and service bookings',
-        'Implemented Adobe Analytics for tracking user behaviour and conversions',
-      ],
-      technologies: ['AEM', 'React on AEM', 'JavaScript', 'REST APIs', 'Magento 2', 'Adobe Analytics'],
-      category: 'enterprise',
-    },
-    {
-      name: 'Corporate Branding Website',
-      client: 'Bekaert Dramix Constructions',
-      role: 'Tech Lead | AEM Frontend Developer',
-      problem: 'Design and develop a responsive branding website showcasing products, case studies, and technical resources.',
-      contributions: [
-        'Built custom AEM components and lead-generation forms integrated via REST APIs',
-        'Improved SEO, performance, and engagement using analytics-driven optimisation',
-        'Designed and developed a responsive branding website showcasing products and case studies',
-      ],
-      technologies: ['AEM', 'HTML5', 'CSS3', 'JavaScript', 'REST APIs', 'Adobe Analytics'],
-      category: 'branding',
-    },
-    {
-      name: 'OMA Living E-commerce',
-      client: 'OMA Living',
-      role: 'Tech Lead | Magento Frontend Developer',
-      problem: 'Deliver a responsive Magento 2 storefront supporting large product catalogues and advanced filtering.',
-      contributions: [
-        'Optimised frontend performance and UI interactions for improved usability',
-        'Integrated Google Analytics 4, contributing to a 30% increase in online sales post-launch',
-        'Delivered a responsive Magento 2 storefront with advanced filtering',
-      ],
-      technologies: ['Magento 2', 'HTML5', 'CSS3', 'JavaScript', 'jQuery', 'Google Analytics 4'],
-      category: 'e-commerce',
-    },
-    {
-      name: 'CASA OMA Booking Platform',
-      client: 'CASA OMA',
-      role: 'Tech Lead | Next.js Developer',
-      problem: 'Build a premium branding website focused on consultation bookings with headless CMS integration.',
-      contributions: [
-        'Integrated headless Magento 2 for content and backend management',
-        'Implemented a custom appointment booking flow and optimised performance across devices',
-        'Built a premium branding website focused on consultation bookings',
-      ],
-      technologies: ['Next.js', 'Magento 2 (Headless)', 'HTML5', 'CSS3', 'JavaScript'],
-      category: 'branding',
-    },
-    {
-      name: 'ITC Brand Websites',
-      client: 'ITC Limited (Dark Fantasy, Sunfeast Yippee, Aashirvaad, B Natural, Bingo)',
-      role: 'AEM Frontend Developer | Tech Lead',
-      problem: 'Design and develop multiple AEM-based brand websites with interactive and gamified experiences.',
-      contributions: [
-        'Led frontend delivery for select brands, coordinating designers, content teams, backend, and QA',
-        'Improved engagement, SEO, and content authoring efficiency through reusable component architecture',
-        'Designed and developed multiple AEM-based brand websites with interactive experiences',
-      ],
-      technologies: ['Adobe Experience Manager', 'React.js', 'JavaScript', 'HTML5', 'CSS3'],
-      category: 'marketing',
-    },
-  ];
-
-  const getCategoryColor = (category: Project['category']) => {
-    const colors = {
-      'e-commerce': 'bg-emerald-100 text-emerald-800 dark:bg-emerald-900 dark:text-emerald-200',
-      'enterprise': 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200',
-      'marketing': 'bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200',
-      'branding': 'bg-amber-100 text-amber-800 dark:bg-amber-900 dark:text-amber-200',
-    };
-    return colors[category];
-  };
-
   return (
-    <section id="projects" className="py-20 bg-slate-50 dark:bg-slate-800" ref={ref}>
-      <div className="max-w-6xl mx-auto px-6">
-        {/* Section Header */}
+    <section
+      id="projects"
+      className="relative py-24 px-4 sm:px-6 bg-bone text-ink border-y-[3px] border-ink overflow-hidden"
+    >
+      <div className="absolute inset-0 dot-grid opacity-40 pointer-events-none" aria-hidden />
+
+      {/* full-bleed marquee on top */}
+      <div className="absolute top-0 left-0 right-0 bg-canvas text-bone py-2 border-b-[3px] border-ink overflow-hidden">
+        <Marquee
+          items={[
+            <span key="a" className="display text-xl">11 PLATFORMS</span>,
+            <span key="b" className="display text-xl text-neon">★</span>,
+            <span key="c" className="display text-xl">10+ GLOBAL CLIENTS</span>,
+            <span key="d" className="display text-xl text-neon">★</span>,
+            <span key="e" className="display text-xl">ENTERPRISE / E-COMMERCE / MARKETING / BRANDING</span>,
+            <span key="f" className="display text-xl text-neon">★</span>,
+          ]}
+          separator={<span className="mx-5 display text-xl">/</span>}
+        />
+      </div>
+
+      <div className="relative max-w-7xl mx-auto pt-10">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-12"
+          className="mb-12 flex flex-wrap items-end justify-between gap-4"
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4">
-            Key Projects
-          </h2>
-          <motion.div
-            initial={{ width: 0 }}
-            animate={isInView ? { width: 80 } : { width: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="h-1 bg-slate-900 dark:bg-white mx-auto mb-4"
-          />
-          <p className="text-slate-600 dark:text-slate-300 max-w-2xl mx-auto">
-            A selection of enterprise projects delivered for global clients, 
-            showcasing technical leadership and business impact.
+          <div>
+            <div className="inline-block bg-canvas text-bone px-3 py-1 mono uppercase text-[11px] tracking-widest mb-3">
+              05 / Work
+            </div>
+            <h2 className="display text-5xl sm:text-7xl">
+              <SplitText text="THE BRAG" />{" "}
+              <SplitText text="WALL." delay={0.12} className="bg-ink text-neon border-[3px] border-ink inline-block px-3" />
+            </h2>
+          </div>
+          <p className="mono text-sm uppercase tracking-widest max-w-md">
+            Real shipped. Real revenue. Real bugs.
           </p>
         </motion.div>
 
-        {/* Project Grid */}
-        <div className="grid md:grid-cols-2 gap-6">
-          {projects.map((project, index) => (
-            <motion.article
-              key={index}
-              initial={{ opacity: 0, y: 30 }}
-              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-              transition={{ duration: 0.5, delay: 0.1 * (index % 4) }}
-              whileHover={{ y: -5, transition: { duration: 0.2 } }}
-              className="bg-white dark:bg-slate-900 rounded-xl p-6 shadow-sm hover:shadow-xl transition-all duration-300 group"
-            >
-              {/* Header */}
-              <div className="flex items-start justify-between gap-4 mb-4">
-                <div className="flex items-start gap-3">
-                  <motion.div
-                    whileHover={{ rotate: 180, transition: { duration: 0.3 } }}
-                    className="p-2 bg-slate-100 dark:bg-slate-800 rounded-lg shrink-0 group-hover:bg-slate-200 dark:group-hover:bg-slate-700 transition-colors"
+        <div className="grid md:grid-cols-2 gap-7" style={{ perspective: "1400px" }}>
+          {projects.map((p, i) => {
+            const style = categoryStyle[p.category];
+            return (
+              <motion.div
+                key={p.name}
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-60px" }}
+                transition={{ duration: 0.6, delay: (i % 4) * 0.07 }}
+              >
+                <TiltCard max={8} className="brutal p-6 h-full relative">
+                  <span
+                    className={`absolute -top-4 -right-3 ${style.bg} ${style.text} border-[3px] border-ink chunk px-3 py-1 mono uppercase text-[10px] tracking-widest`}
+                    style={{ transform: `rotate(${style.tilt}deg)` }}
                   >
-                    <Layers className="w-5 h-5 text-slate-700 dark:text-slate-300" />
-                  </motion.div>
-                  <div>
-                    <h3 className="text-lg font-bold text-slate-900 dark:text-white">
-                      {project.name}
-                    </h3>
-                    <p className="text-slate-600 dark:text-slate-400 text-sm">
-                      {project.client}
-                    </p>
+                    {style.label}
+                  </span>
+
+                  <div className="mono uppercase text-[10px] tracking-widest opacity-70">
+                    /{String(i + 1).padStart(2, "0")} · {p.client}
                   </div>
-                </div>
-                <span className={`px-2 py-1 text-xs font-medium rounded-full capitalize ${getCategoryColor(project.category)}`}>
-                  {project.category}
-                </span>
-              </div>
+                  <h3 className="display text-2xl sm:text-3xl mt-2 leading-tight">{p.name}</h3>
+                  <p className="mono text-[11px] uppercase tracking-widest mt-1 opacity-80">
+                    {p.role}
+                  </p>
 
-              {/* Role */}
-              <div className="mb-3">
-                <span className="text-sm font-semibold text-slate-700 dark:text-slate-300">
-                  Role: {project.role}
-                </span>
-              </div>
+                  <div className="mt-4 bg-canvas/10 border-2 border-ink px-3 py-2 text-sm">
+                    <span className="mono uppercase text-[10px] tracking-widest mr-2 opacity-70">brief —</span>
+                    {p.problem}
+                  </div>
 
-              {/* Problem */}
-              <p className="text-slate-600 dark:text-slate-400 text-sm mb-4">
-                {project.problem}
-              </p>
+                  <ul className="mt-4 space-y-2">
+                    {p.contributions.map((c, ci) => (
+                      <li key={ci} className="flex gap-2 text-sm leading-snug">
+                        <span className={`shrink-0 mt-1.5 w-2.5 h-2.5 ${style.bg} border-2 border-ink`} />
+                        <span>{c}</span>
+                      </li>
+                    ))}
+                  </ul>
 
-              {/* Contributions */}
-              <div className="mb-4">
-                <h4 className="text-sm font-semibold text-slate-800 dark:text-slate-200 mb-2">
-                  Key Contributions
-                </h4>
-                <ul className="space-y-1.5">
-                  {project.contributions.slice(0, 3).map((contribution, cIndex) => (
-                    <li
-                      key={cIndex}
-                      className="flex items-start gap-2 text-slate-600 dark:text-slate-400 text-sm"
-                    >
-                      <span className="w-1 h-1 bg-slate-400 rounded-full mt-2 shrink-0"></span>
-                      {contribution}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              {/* Technologies */}
-              <div className="flex flex-wrap gap-1.5">
-                {project.technologies.map((tech, tIndex) => (
-                  <motion.span
-                    key={tIndex}
-                    whileHover={{ scale: 1.1 }}
-                    className="px-2 py-0.5 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-xs rounded font-medium cursor-default"
-                  >
-                    {tech}
-                  </motion.span>
-                ))}
-              </div>
-            </motion.article>
-          ))}
+                  <div className="mt-5 pt-4 border-t-[3px] border-ink/70 flex flex-wrap gap-1.5">
+                    {p.technologies.map((t) => (
+                      <span
+                        key={t}
+                        className="mono text-[10px] uppercase tracking-widest bg-bone border-2 border-ink px-2 py-0.5 hover:bg-ink hover:text-bone transition-colors"
+                      >
+                        {t}
+                      </span>
+                    ))}
+                  </div>
+                </TiltCard>
+              </motion.div>
+            );
+          })}
         </div>
       </div>
     </section>
