@@ -21,7 +21,7 @@ export default function Hero() {
     <section
       ref={ref}
       id="top"
-      className="relative pt-32 pb-12 sm:pt-40 sm:pb-16 px-4 sm:px-6 overflow-hidden"
+      className="relative pt-28 pb-10 sm:pt-40 sm:pb-16 px-4 sm:px-6 overflow-hidden"
     >
       {/* drifting background blobs */}
       <motion.div
@@ -70,7 +70,7 @@ export default function Hero() {
             transition={{ delay: 0.6 }}
             className="inline-flex items-center gap-2 bg-ink text-bone border-[3px] border-ink chunk px-3 py-1.5 mono text-[11px] uppercase tracking-widest"
           >
-            <Sparkles className="w-3.5 h-3.5 text-neon" /> 9+ yrs · 20+ shipped
+            <Sparkles className="w-3.5 h-3.5 text-neon" /> {yoe}+ yrs · 20+ shipped
           </motion.span>
         </div>
 
@@ -81,7 +81,7 @@ export default function Hero() {
               role="heading"
               aria-level={2}
               aria-label="Ajith Lal R — Engineer, Manager, Architect"
-              className="display text-[16vw] sm:text-[12vw] lg:text-[9.5vw] xl:text-[10rem] text-bone"
+              className="display text-[18vw] sm:text-[12vw] lg:text-[9.5vw] xl:text-[10rem] text-bone wrap-break-word"
             >
               <span className="block">
                 <SplitText text="AJITH" />
@@ -90,8 +90,8 @@ export default function Hero() {
                 <SplitText text="LAL R." delay={0.1} />
               </span>
               <span className="block mt-2 text-ink">
-                <span className="mono text-base sm:text-lg align-middle mr-3">/</span>
-                <span className="display text-[10vw] sm:text-[8vw] lg:text-[6vw] xl:text-7xl">
+                <span className="mono text-base sm:text-lg align-middle mr-2">/</span>
+                <span className="display text-[9vw] sm:text-[8vw] lg:text-[6vw] xl:text-7xl">
                   <CycleWord
                     words={["ENGINEER.", "MANAGER.", "ARCHITECT.", "SHIPPER.", "OPERATOR."]}
                     interval={1700}
@@ -155,16 +155,16 @@ export default function Hero() {
           </motion.div>
 
           {/* RIGHT — sticker chaos */}
-          <div className="relative h-[440px] sm:h-[520px] lg:h-[600px]">
+          <div className="relative h-[460px] sm:h-[520px] lg:h-[600px] mt-4 lg:mt-0">
             <motion.div
               initial={{ scale: 0.4, rotate: 22, opacity: 0 }}
               animate={{ scale: 1, rotate: -6, opacity: 1 }}
               transition={{ type: "spring", stiffness: 160, damping: 14, delay: 0.3 }}
               style={{ y: y2 }}
-              className="absolute top-2 right-4 sm:right-8 w-48 h-48 sm:w-60 sm:h-60 bg-ink text-bone border-[3px] border-ink chunk-lg flex flex-col items-center justify-center"
+              className="absolute top-2 right-2 sm:right-8 w-40 h-40 sm:w-60 sm:h-60 bg-ink text-bone border-[3px] border-ink chunk-lg flex flex-col items-center justify-center"
             >
-              <span className="display text-7xl sm:text-8xl text-neon">{yoe}+</span>
-              <span className="mono uppercase text-[10px] tracking-widest">years shipping</span>
+              <span className="display text-6xl sm:text-8xl text-neon leading-none">{yoe}+</span>
+              <span className="mono uppercase text-[10px] tracking-widest mt-1">years shipping</span>
               <span className="absolute -top-3 -left-3 bg-neon text-ink border-[3px] border-ink px-2 py-0.5 mono text-[10px] uppercase tracking-widest -rotate-6">
                 ★ certified
               </span>
@@ -175,7 +175,7 @@ export default function Hero() {
               animate={{ scale: 1, rotate: 5, opacity: 1 }}
               transition={{ type: "spring", stiffness: 160, damping: 14, delay: 0.45 }}
               style={{ y: y3 }}
-              className="absolute top-44 sm:top-52 left-2 sm:left-6 w-44 bg-bone border-[3px] border-ink chunk p-3"
+              className="absolute top-40 sm:top-52 left-2 sm:left-6 w-36 sm:w-44 bg-bone border-[3px] border-ink chunk p-3"
             >
               <div className="stripes-warn h-2.5 mb-2" />
               <div className="display text-3xl leading-none">20+</div>
@@ -186,7 +186,7 @@ export default function Hero() {
               initial={{ scale: 0.3, rotate: 30, opacity: 0 }}
               animate={{ scale: 1, rotate: -12, opacity: 1 }}
               transition={{ type: "spring", stiffness: 160, damping: 14, delay: 0.6 }}
-              className="absolute bottom-4 right-2 sm:right-12 w-44 h-44 bg-bone border-[3px] border-ink chunk-lg rounded-full flex flex-col items-center justify-center text-center relative overflow-hidden"
+              className="absolute bottom-2 right-2 sm:right-12 w-36 h-36 sm:w-44 sm:h-44 bg-bone border-[3px] border-ink chunk-lg rounded-full flex flex-col items-center justify-center text-center overflow-hidden"
             >
               <div className="absolute inset-0 spin-slow opacity-90 pointer-events-none">
                 <svg viewBox="0 0 100 100" className="w-full h-full">
@@ -200,15 +200,15 @@ export default function Hero() {
                   </text>
                 </svg>
               </div>
-              <span className="display text-2xl leading-none text-canvas">ADOBE</span>
-              <span className="display text-base leading-tight text-canvas">CERTIFIED</span>
+              <span className="display text-xl sm:text-2xl leading-none text-canvas">ADOBE</span>
+              <span className="display text-sm sm:text-base leading-tight text-canvas">CERTIFIED</span>
             </motion.div>
 
             <motion.div
               initial={{ scale: 0.3, rotate: -30, opacity: 0 }}
               animate={{ scale: 1, rotate: 8, opacity: 1 }}
               transition={{ type: "spring", stiffness: 160, damping: 14, delay: 0.75 }}
-              className="absolute bottom-32 sm:bottom-44 left-10 sm:left-20 bg-canvas-hi text-bone border-[3px] border-ink chunk px-3 py-2"
+              className="absolute bottom-44 sm:bottom-44 left-6 sm:left-20 bg-canvas-hi text-bone border-[3px] border-ink chunk px-3 py-2 z-10"
             >
               <span className="mono uppercase text-[11px] tracking-widest">@ pwc india</span>
             </motion.div>
@@ -216,7 +216,7 @@ export default function Hero() {
             {/* arrow doodle that draws */}
             <svg
               aria-hidden
-              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 sm:w-40 text-bone rotate-12 opacity-90"
+              className="hidden sm:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 sm:w-40 text-bone rotate-12 opacity-90"
               viewBox="0 0 100 60"
               fill="none"
             >
