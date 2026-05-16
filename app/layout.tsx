@@ -79,15 +79,15 @@ export const metadata: Metadata = {
     description: siteDescription,
     siteName: "Ajith Lal R Portfolio",
     locale: "en_US",
-    images: [{ url: "/og-image.svg", width: 1200, height: 630, alt: siteName, type: "image/svg+xml" }],
+    // og:image is auto-injected from app/opengraph-image.tsx as a real 1200x630 PNG
   },
   twitter: {
     card: "summary_large_image",
     title: siteName,
     description: siteDescription,
-    images: ["/og-image.svg"],
     creator: "@ajithlalr",
     site: "@ajithlalr",
+    // twitter:image is auto-injected from app/twitter-image.tsx
   },
   robots: {
     index: true,
@@ -111,6 +111,9 @@ export const metadata: Metadata = {
     "profile:last_name": "R",
     "profile:gender": "male",
   },
+  verification: {
+    google: "4Yg68Lm_iwGxrnIk9J4nGot2pEU7XVcJ408F4jyyDAo",
+  },
 };
 
 export const viewport: Viewport = {
@@ -127,7 +130,7 @@ const personLd = {
   name: "Ajith Lal R",
   alternateName: ["Ajith Lal", "Ajithlal R"],
   url: siteUrl,
-  image: `${siteUrl}/og-image.svg`,
+  image: `${siteUrl}/opengraph-image`,
   jobTitle: "Engineering Manager / Technical Delivery Manager",
   description: siteDescription,
   worksFor: {
@@ -205,7 +208,7 @@ const webPageLd = {
   name: siteName,
   isPartOf: { "@id": `${siteUrl}/#website` },
   about: { "@id": `${siteUrl}/#person` },
-  primaryImageOfPage: { "@type": "ImageObject", url: `${siteUrl}/og-image.svg` },
+  primaryImageOfPage: { "@type": "ImageObject", url: `${siteUrl}/opengraph-image` },
   inLanguage: "en-US",
   breadcrumb: { "@id": `${siteUrl}/#breadcrumb` },
 };
@@ -223,7 +226,63 @@ const breadcrumbLd = {
   ],
 };
 
-const jsonLd = { "@context": "https://schema.org", "@graph": [personLd, websiteLd, webPageLd, breadcrumbLd] };
+const faqLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "@id": `${siteUrl}/#faq`,
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "Who is Ajith Lal R?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: `Ajith Lal R is an Engineering Manager and Technical Delivery Manager based in Chennai, India, with ${yoe}+ years of experience leading enterprise frontend platforms at PwC India. He works across e-commerce, retail, travel, and content for global clients.`,
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Where does Ajith Lal work?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Ajith Lal R works at PwC India (PricewaterhouseCoopers) as a Manager, leading a team of 20+ engineers on large-scale digital delivery for global enterprise clients.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "What technologies does Ajith Lal specialize in?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Ajith Lal specializes in Next.js, React, TypeScript, Adobe Experience Manager (AEM), and Magento. He is an Adobe Certified Expert — Commerce Frontend Developer and an Adobe Certified Professional — Commerce Business Practitioner.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Where is Ajith Lal based?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Ajith Lal R is based in Chennai, Tamil Nadu, India and is open to remote engagements with global teams.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "How can I hire or contact Ajith Lal?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: `You can reach Ajith Lal R via email at ajithlaldev@gmail.com, on LinkedIn at linkedin.com/in/ajithlalrg, or through the contact section on his portfolio at ${siteUrl}.`,
+      },
+    },
+    {
+      "@type": "Question",
+      name: "What is the official website of Ajith Lal R?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: `The official portfolio website of Ajith Lal R is ${siteUrl}.`,
+      },
+    },
+  ],
+};
+
+const jsonLd = { "@context": "https://schema.org", "@graph": [personLd, websiteLd, webPageLd, breadcrumbLd, faqLd] };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (

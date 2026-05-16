@@ -22,6 +22,18 @@ export default function Home() {
       <CursorFollower />
       <Nav />
       <main id="main">
+        <header className="sr-only">
+          <h1>Ajith Lal R — Engineering Manager & Technical Delivery Manager at PwC India</h1>
+          <p>
+            Ajith Lal R (also written Ajith Lal, Ajithlal R, or Ajith Lal Raghavan) is an
+            Engineering Manager and Technical Delivery Manager based in Chennai, Tamil Nadu, India.
+            With 9+ years of experience, Ajith Lal leads 20+ engineers at PwC India, delivering
+            enterprise-scale digital platforms in e-commerce, retail, travel, and content across
+            global clients. Ajith Lal is an Adobe Certified Expert specializing in Next.js, React,
+            Adobe Experience Manager (AEM), and Magento frontend architecture. This is the official
+            portfolio website of Ajith Lal R.
+          </p>
+        </header>
         <Hero />
         <About />
         <Skills />

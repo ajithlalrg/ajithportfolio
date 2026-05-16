@@ -59,7 +59,7 @@ export default function About() {
             className="brutal p-6 sm:p-8"
           >
             <p className="text-lg sm:text-xl leading-relaxed">
-              I&apos;m a results-driven{" "}
+              I&apos;m <strong>Ajith Lal R</strong> — a results-driven{" "}
               <strong className="bg-neon border-2 border-ink px-1.5">Engineering Manager / Technical Delivery Manager</strong>{" "}
               with {yoe}+ years delivering enterprise-scale digital platforms across e-commerce,
               retail, travel, and content ecosystems.
@@ -73,9 +73,9 @@ export default function About() {
               and <span className="mono bg-bone border-2 border-ink px-1.5">Magento</span>.
             </p>
             <p className="mt-5 text-lg sm:text-xl leading-relaxed">
-              Currently at <strong>PwC India</strong> as Manager — combining technical
+              Currently Ajith Lal is at <strong>PwC India</strong> as Manager — combining technical
               leadership, delivery, stakeholder engagement, and hands-on engineering.
-              Multi-country rollouts and global clients.
+              Multi-country rollouts and global clients out of <strong>Chennai, India</strong>.
             </p>
 
             <div className="mt-8">

@@ -4,9 +4,9 @@ import { Linkedin, Github, Mail, ArrowUp } from "lucide-react";
 import Marquee from "./Marquee";
 
 const socials = [
-  { icon: Linkedin, href: "https://www.linkedin.com/in/ajithlalrg/", label: "LinkedIn", bg: "bg-canvas", text: "text-bone" },
-  { icon: Github, href: "https://github.com/ajithlalrg", label: "GitHub", bg: "bg-bone", text: "text-ink" },
-  { icon: Mail, href: "mailto:ajithlaldev@gmail.com", label: "Email", bg: "bg-neon", text: "text-ink" },
+  { icon: Linkedin, href: "https://www.linkedin.com/in/ajithlalrg/", label: "Ajith Lal R on LinkedIn", bg: "bg-canvas", text: "text-bone" },
+  { icon: Github, href: "https://github.com/ajithlalrg", label: "Ajith Lal R on GitHub", bg: "bg-bone", text: "text-ink" },
+  { icon: Mail, href: "mailto:ajithlaldev@gmail.com", label: "Email Ajith Lal R", bg: "bg-neon", text: "text-ink" },
 ];
 
 export default function Footer() {
@@ -55,8 +55,8 @@ export default function Footer() {
               Engineering Manager · Technical Delivery Manager
             </p>
             <p className="mt-4 text-sm max-w-md opacity-80">
-              Shipping enterprise-grade things since 2016. Reach me through the channels →
-              I&apos;m usually quick.
+              Ajith Lal R has been shipping enterprise-grade things since 2016 out of Chennai,
+              India. Reach me through the channels → I&apos;m usually quick.
             </p>
           </div>
 
