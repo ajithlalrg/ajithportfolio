@@ -5,6 +5,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
 import { yearsOfExperience } from "@/lib/yoe";
 import ServiceWorkerRegister from "@/components/sw-register";
+import CursorFollower from "@/components/CursorFollower";
 
 const sans = Space_Grotesk({
   subsets: ["latin"],
@@ -259,6 +260,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         />
       </head>
       <body className={`${sans.variable} ${display.variable} ${mono.variable} font-sans grain`}>
+        <CursorFollower />
         {children}
         <ServiceWorkerRegister />
         <Analytics />

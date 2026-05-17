@@ -77,11 +77,9 @@ export default function Hero() {
         <div className="grid lg:grid-cols-[1.45fr_1fr] gap-10 lg:gap-12 items-start">
           {/* LEFT */}
           <motion.div style={{ y: y1 }}>
-            <div
-              role="heading"
-              aria-level={2}
+            <h2
               aria-label="Ajith Lal R — Engineer, Manager, Architect"
-              className="display text-[18vw] sm:text-[12vw] lg:text-[9.5vw] xl:text-[10rem] text-bone wrap-break-word"
+              className="display text-[18vw] sm:text-[12vw] lg:text-[9.5vw] xl:text-[10rem] text-bone wrap-break-word m-0"
             >
               <span className="block">
                 <SplitText text="AJITH" />
@@ -98,7 +96,7 @@ export default function Hero() {
                   />
                 </span>
               </span>
-            </div>
+            </h2>
 
             <motion.p
               initial={{ y: 24, opacity: 0 }}
