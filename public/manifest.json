@@ -1,9 +1,11 @@
 {
+  "id": "/",
   "name": "Ajith Lal R | Engineering Manager & Technical Delivery Manager",
   "short_name": "Ajith Lal R",
   "description": "Engineering Manager & Technical Delivery Manager leading enterprise-scale digital platforms across e-commerce, retail, travel, and content.",
   "start_url": "/",
   "display": "standalone",
+  "display_override": ["standalone", "minimal-ui", "browser"],
   "background_color": "#C8334A",
   "theme_color": "#C8334A",
   "orientation": "portrait-primary",

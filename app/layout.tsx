@@ -4,6 +4,7 @@ import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
 import { yearsOfExperience } from "@/lib/yoe";
+import ServiceWorkerRegister from "@/components/sw-register";
 
 const sans = Space_Grotesk({
   subsets: ["latin"],
@@ -106,10 +107,17 @@ export const metadata: Metadata = {
     canonical: siteUrl,
     types: { "application/rss+xml": `${siteUrl}/feed.xml` },
   },
+  appleWebApp: {
+    capable: true,
+    title: "Ajith Lal R",
+    statusBarStyle: "black-translucent",
+  },
   other: {
     "profile:first_name": "Ajith Lal",
     "profile:last_name": "R",
     "profile:gender": "male",
+    "mobile-web-app-capable": "yes",
+    "application-name": "Ajith Lal R",
   },
   verification: {
     google: "4Yg68Lm_iwGxrnIk9J4nGot2pEU7XVcJ408F4jyyDAo",
@@ -252,6 +260,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       </head>
       <body className={`${sans.variable} ${display.variable} ${mono.variable} font-sans grain`}>
         {children}
+        <ServiceWorkerRegister />
         <Analytics />
         <SpeedInsights />
       </body>
