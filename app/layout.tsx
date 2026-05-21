@@ -242,7 +242,63 @@ const breadcrumbLd = {
   ],
 };
 
-const jsonLd = { "@context": "https://schema.org", "@graph": [personLd, websiteLd, webPageLd, breadcrumbLd] };
+const faqLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "@id": `${siteUrl}/#faq`,
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "Who is Ajith Lal R?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: `Ajith Lal R is an Engineering Manager and Technical Delivery Manager with ${yoe}+ years of experience building enterprise-scale digital platforms. He currently leads 20+ engineers at PwC India, shipping work across e-commerce, retail, travel, and content using Next.js, React, Adobe Experience Manager (AEM), and Magento.`,
+      },
+    },
+    {
+      "@type": "Question",
+      name: "What does Ajith Lal R do?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Ajith Lal R runs delivery and frontend architecture for large web platforms. He manages engineering teams, owns technical roadmaps, drives stakeholder alignment, and architects headless-CMS and commerce systems on Next.js, React, AEM, and Magento.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Where is Ajith Lal R based?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Ajith Lal R is based in Chennai, Tamil Nadu, India, and is open to remote engagements.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "What technologies and tools does Ajith Lal R specialize in?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "His core stack is Next.js, React, TypeScript, Adobe Experience Manager (AEM), and Magento. He also works across headless CMS architectures, frontend performance, design systems, and CI/CD delivery practices.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "What certifications does Ajith Lal R hold?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Ajith Lal R is an Adobe Certified Expert — Commerce Frontend Developer and an Adobe Certified Professional — Commerce Business Practitioner.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Is Ajith Lal R available for hire?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Yes. Ajith Lal R is open to Engineering Manager, Technical Delivery Manager, and Frontend Architect roles — full-time, contract, or consulting — based in Chennai or remote.",
+      },
+    },
+  ],
+};
+
+const jsonLd = { "@context": "https://schema.org", "@graph": [personLd, websiteLd, webPageLd, breadcrumbLd, faqLd] };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
