@@ -29,7 +29,7 @@ const mono = JetBrains_Mono({
 const yoe = yearsOfExperience();
 const siteUrl = "https://ajithlal-red.vercel.app";
 const siteName = "Ajith Lal R — Engineering Manager & Technical Delivery Manager";
-const siteDescription = `Engineering Manager / Technical Delivery Manager with ${yoe}+ years building enterprise-scale digital platforms across e-commerce, retail, travel, and content. Leading 20+ engineers at PwC India, shipping with Next.js, React, AEM, and Magento.`;
+const siteDescription = `Engineering Manager / Technical Delivery Manager with ${yoe}+ years building enterprise-scale digital platforms across e-commerce, retail, travel, content, and mobile. Leading 20+ engineers at PwC India, shipping with Next.js, React, React Native, AEM, and Magento.`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -50,6 +50,8 @@ export const metadata: Metadata = {
     "Chennai",
     "Next.js Developer",
     "React Developer",
+    "React Native Developer",
+    "Cross-platform Mobile",
     "Adobe Experience Manager",
     "AEM Developer",
     "Magento Frontend",
@@ -170,6 +172,8 @@ const personLd = {
     "Frontend Architecture",
     "Next.js",
     "React",
+    "React Native",
+    "Cross-platform Mobile Development",
     "Adobe Experience Manager",
     "Magento",
     "Headless CMS",
@@ -252,7 +256,7 @@ const faqLd = {
       name: "Who is Ajith Lal R?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: `Ajith Lal R is an Engineering Manager and Technical Delivery Manager with ${yoe}+ years of experience building enterprise-scale digital platforms. He currently leads 20+ engineers at PwC India, shipping work across e-commerce, retail, travel, and content using Next.js, React, Adobe Experience Manager (AEM), and Magento.`,
+        text: `Ajith Lal R is an Engineering Manager and Technical Delivery Manager with ${yoe}+ years of experience building enterprise-scale digital platforms. He currently leads 20+ engineers at PwC India, shipping work across e-commerce, retail, travel, content, and mobile using Next.js, React, React Native, Adobe Experience Manager (AEM), and Magento.`,
       },
     },
     {
@@ -260,7 +264,7 @@ const faqLd = {
       name: "What does Ajith Lal R do?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Ajith Lal R runs delivery and frontend architecture for large web platforms. He manages engineering teams, owns technical roadmaps, drives stakeholder alignment, and architects headless-CMS and commerce systems on Next.js, React, AEM, and Magento.",
+        text: "Ajith Lal R runs delivery and frontend architecture for large web platforms. He manages engineering teams, owns technical roadmaps, drives stakeholder alignment, and architects headless-CMS, commerce, and cross-platform mobile systems on Next.js, React, React Native, AEM, and Magento.",
       },
     },
     {
@@ -276,7 +280,7 @@ const faqLd = {
       name: "What technologies and tools does Ajith Lal R specialize in?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "His core stack is Next.js, React, TypeScript, Adobe Experience Manager (AEM), and Magento. He also works across headless CMS architectures, frontend performance, design systems, and CI/CD delivery practices.",
+        text: "His core stack is Next.js, React, React Native, TypeScript, Adobe Experience Manager (AEM), and Magento. He also works across headless CMS architectures, cross-platform mobile, frontend performance, design systems, and CI/CD delivery practices.",
       },
     },
     {

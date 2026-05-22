@@ -69,8 +69,9 @@ export default function About() {
               delivery, and drive scalable frontend architectures using{" "}
               <span className="mono bg-bone border-2 border-ink px-1.5">Next.js</span>{" "}
               <span className="mono bg-bone border-2 border-ink px-1.5">React</span>{" "}
+              <span className="mono bg-bone border-2 border-ink px-1.5">React Native</span>{" "}
               <span className="mono bg-bone border-2 border-ink px-1.5">AEM</span>{" "}
-              and <span className="mono bg-bone border-2 border-ink px-1.5">Magento</span>.
+              and <span className="mono bg-bone border-2 border-ink px-1.5">Magento</span> — web and mobile under one architecture.
             </p>
             <p className="mt-5 text-lg sm:text-xl leading-relaxed">
               Currently Ajith Lal is at <strong>PwC India</strong> as Manager — combining technical

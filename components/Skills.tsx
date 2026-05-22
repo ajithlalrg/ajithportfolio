@@ -25,7 +25,7 @@ const categories: Category[] = [
     bg: "bg-bone",
     text: "text-ink",
     rotate: 1.5,
-    skills: ["HTML5", "CSS3", "JavaScript (ES6+)", "React.js", "Next.js", "TypeScript", "Redux", "Tailwind CSS", "Bootstrap 4/5", "Shadcn", "Material UI"],
+    skills: ["HTML5", "CSS3", "JavaScript (ES6+)", "React.js", "React Native", "Next.js", "TypeScript", "Redux", "Tailwind CSS", "Bootstrap 4/5", "Shadcn", "Material UI"],
   },
   {
     title: "CMS & Commerce",

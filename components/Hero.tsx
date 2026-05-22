@@ -106,8 +106,8 @@ export default function Hero() {
             >
               I run delivery and architecture for big web platforms. Currently
               shipping enterprise things at <strong className="text-ink bg-bone px-1.5 border-[2px] border-ink">PwC India</strong> with{" "}
-              <strong className="text-ink bg-neon px-1.5 border-[2px] border-ink">Next.js · React · AEM · Magento</strong>. Lead
-              20+ engineers across e-commerce, retail, travel, and content.
+              <strong className="text-ink bg-neon px-1.5 border-[2px] border-ink">Next.js · React · React Native · AEM · Magento</strong>. Lead
+              20+ engineers across e-commerce, retail, travel, content, and mobile.
             </motion.p>
 
             <motion.div
@@ -253,7 +253,7 @@ export default function Hero() {
               <span key="d" className="display text-3xl sm:text-4xl text-neon">/</span>,
               <span key="e" className="display text-3xl sm:text-4xl">FRONTEND ARCHITECT</span>,
               <span key="f" className="display text-3xl sm:text-4xl text-canvas">/</span>,
-              <span key="g" className="display text-3xl sm:text-4xl">NEXT.JS · REACT · AEM · MAGENTO</span>,
+              <span key="g" className="display text-3xl sm:text-4xl">NEXT.JS · REACT · REACT NATIVE · AEM · MAGENTO</span>,
               <span key="h" className="display text-3xl sm:text-4xl text-neon">/</span>,
             ]}
             separator={<span className="mx-6 display text-3xl sm:text-4xl">★</span>}

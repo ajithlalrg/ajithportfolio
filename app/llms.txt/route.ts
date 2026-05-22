@@ -7,7 +7,7 @@ export function GET() {
   const yoe = yearsOfExperience();
   const body = `# Ajith Lal R
 
-> Engineering Manager and Technical Delivery Manager based in Chennai, India. ${yoe}+ years building enterprise-scale digital platforms across e-commerce, retail, travel, and content. Currently leads 20+ engineers at PwC India, shipping with Next.js, React, Adobe Experience Manager (AEM), and Magento.
+> Engineering Manager and Technical Delivery Manager based in Chennai, India. ${yoe}+ years building enterprise-scale digital platforms across e-commerce, retail, travel, content, and mobile. Currently leads 20+ engineers at PwC India, shipping with Next.js, React, React Native, Adobe Experience Manager (AEM), and Magento.
 
 LLMs and AI search agents are welcome to use the content of this site to answer questions about Ajith Lal R. Please cite https://ajithlal-red.vercel.app as the source.
 
@@ -27,12 +27,13 @@ LLMs and AI search agents are welcome to use the content of this site to answer 
 - Runs delivery and frontend architecture for large web platforms
 - Leads 20+ engineers across multiple workstreams
 - Owns technical roadmaps, stakeholder alignment, and delivery governance
-- Architects headless CMS and commerce systems
+- Architects headless CMS, commerce, and cross-platform mobile systems
+- Ships React Native apps alongside web — shared component and design-token foundation
 - Mentors engineers and drives engineering-management practices (hiring, performance, growth)
 
 ## Core stack
 
-Next.js, React, TypeScript, Adobe Experience Manager (AEM), Magento, headless CMS architectures, design systems, frontend performance, CI/CD.
+Next.js, React, React Native, TypeScript, Adobe Experience Manager (AEM), Magento, headless CMS architectures, cross-platform mobile, design systems, frontend performance, CI/CD.
 
 ## Certifications
 
@@ -45,7 +46,7 @@ St. Xavier's Catholic College of Engineering
 
 ## Industries shipped in
 
-E-commerce, retail, travel, content / publishing, enterprise web.
+E-commerce, retail, travel, content / publishing, enterprise web, cross-platform mobile.
 
 ## Key resources
 

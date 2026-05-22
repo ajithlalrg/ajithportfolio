@@ -31,6 +31,7 @@ const items: Item[] = [
       "Lead delivery and technical execution for large-scale digital platforms across e-commerce, retail, travel, and content.",
       "Manage and mentor 20+ engineers — delivery predictability, code quality, continuous skill development.",
       "Own frontend architecture (Next.js, React, AEM, Magento) aligned to business outcomes.",
+      "Extended the stack to React Native — shipping cross-platform mobile experiences alongside web, with a shared component and design-token foundation.",
       "Cross-team collaboration with product, design, backend, QA, and regional stakeholders.",
       "Improve performance, SEO, and scalability via component-driven architecture.",
       "Promoted from contract to permanent based on consistent delivery and technical leadership.",
