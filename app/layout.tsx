@@ -27,7 +27,7 @@ const mono = JetBrains_Mono({
 });
 
 const yoe = yearsOfExperience();
-const siteUrl = "https://ajithlal-red.vercel.app";
+const siteUrl = "https://ajithlalr.vercel.app";
 const siteName = "Ajith Lal R — Engineering Manager & Technical Delivery Manager";
 const siteDescription = `Engineering Manager / Technical Delivery Manager with ${yoe}+ years building enterprise-scale digital platforms across e-commerce, retail, travel, content, and mobile. Leading 20+ engineers at PwC India, shipping with Next.js, React, React Native, AEM, and Magento.`;
 

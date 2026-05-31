@@ -5,7 +5,7 @@ import { MetadataRoute } from 'next';
 // here. /sitemap.html is also excluded — it's a human HTML page, not a sitemap entry
 // worth indexing on its own.
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://ajithlal-red.vercel.app';
+  const baseUrl = 'https://ajithlalr.vercel.app';
   const lastModified = new Date();
 
   return [

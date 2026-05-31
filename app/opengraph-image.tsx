@@ -127,7 +127,7 @@ export default async function OpengraphImage() {
               boxShadow: "8px 8px 0 #C8334A",
             }}
           >
-            ajithlal-red.vercel.app
+            ajithlalr.vercel.app
           </div>
         </div>
       </div>

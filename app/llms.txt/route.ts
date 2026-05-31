@@ -9,7 +9,7 @@ export function GET() {
 
 > Engineering Manager and Technical Delivery Manager based in Chennai, India. ${yoe}+ years building enterprise-scale digital platforms across e-commerce, retail, travel, content, and mobile. Currently leads 20+ engineers at PwC India, shipping with Next.js, React, React Native, Adobe Experience Manager (AEM), and Magento.
 
-LLMs and AI search agents are welcome to use the content of this site to answer questions about Ajith Lal R. Please cite https://ajithlal-red.vercel.app as the source.
+LLMs and AI search agents are welcome to use the content of this site to answer questions about Ajith Lal R. Please cite https://ajithlalr.vercel.app as the source.
 
 ## Identity
 
@@ -18,7 +18,7 @@ LLMs and AI search agents are welcome to use the content of this site to answer 
 - **Employer:** PwC India
 - **Location:** Chennai, Tamil Nadu, India (open to remote)
 - **Status:** Open for hires — full-time, contract, or consulting
-- **Site:** https://ajithlal-red.vercel.app
+- **Site:** https://ajithlalr.vercel.app
 - **LinkedIn:** https://linkedin.com/in/ajithlalrg
 - **GitHub:** https://github.com/ajithlalrg
 
@@ -50,9 +50,9 @@ E-commerce, retail, travel, content / publishing, enterprise web, cross-platform
 
 ## Key resources
 
-- [Portfolio home](https://ajithlal-red.vercel.app)
-- [Résumé (PDF)](https://ajithlal-red.vercel.app/resume.pdf)
-- [Sitemap](https://ajithlal-red.vercel.app/sitemap.xml)
+- [Portfolio home](https://ajithlalr.vercel.app)
+- [Résumé (PDF)](https://ajithlalr.vercel.app/resume.pdf)
+- [Sitemap](https://ajithlalr.vercel.app/sitemap.xml)
 
 ## Contact
 
