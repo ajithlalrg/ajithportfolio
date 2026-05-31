@@ -25,7 +25,14 @@ const categories: Category[] = [
     bg: "bg-bone",
     text: "text-ink",
     rotate: 1.5,
-    skills: ["HTML5", "CSS3", "JavaScript (ES6+)", "React.js", "React Native", "Next.js", "TypeScript", "Redux", "Tailwind CSS", "Bootstrap 4/5", "Shadcn", "Material UI"],
+    skills: ["HTML5", "CSS3", "JavaScript (ES6+)", "React.js", "React Native", "Next.js", "TypeScript", "Redux", "Tailwind CSS", "Bootstrap 4/5", "Shadcn", "Material UI", "Figma"],
+  },
+  {
+    title: "Mobile & Cross-Platform",
+    bg: "bg-blood",
+    text: "text-bone",
+    rotate: 2,
+    skills: ["React Native (iOS & Android)", "Cross-Platform Delivery", "Push Notifications", "Maps & Live Tracking", "Payment Integration", "App Store / Play Store"],
   },
   {
     title: "CMS & Commerce",
@@ -39,7 +46,7 @@ const categories: Category[] = [
     bg: "bg-canvas-hi",
     text: "text-bone",
     rotate: 2,
-    skills: ["GraphQL", "REST APIs", "API Integration", "Data Architecture"],
+    skills: ["GraphQL", "REST APIs", "Power BI Embedded", "Azure", "API Integration", "Data Architecture"],
   },
   {
     title: "Tools & Practice",
@@ -87,7 +94,7 @@ export default function Skills() {
             </h2>
           </div>
           <p className="mono text-sm uppercase tracking-widest max-w-sm">
-            Six departments. One brain. Every chip — shipped in prod.
+            Seven departments. One brain. Every chip — shipped in prod.
           </p>
         </motion.div>
 

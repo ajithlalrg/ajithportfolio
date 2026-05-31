@@ -62,7 +62,7 @@ export default function About() {
               I&apos;m <strong>Ajith Lal R</strong> — a results-driven{" "}
               <strong className="bg-neon border-2 border-ink px-1.5">Engineering Manager / Technical Delivery Manager</strong>{" "}
               with {yoe}+ years delivering enterprise-scale digital platforms across e-commerce,
-              retail, travel, and content ecosystems.
+              retail, travel, content, and mobile ecosystems.
             </p>
             <p className="mt-5 text-lg sm:text-xl leading-relaxed">
               I lead <strong>cross-functional teams of 20+ engineers</strong>, own end-to-end

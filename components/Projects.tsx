@@ -5,7 +5,7 @@ import TiltCard from "./TiltCard";
 import Marquee from "./Marquee";
 import SplitText from "./SplitText";
 
-type Category = "e-commerce" | "enterprise" | "marketing" | "branding";
+type Category = "e-commerce" | "enterprise" | "marketing" | "branding" | "mobile";
 
 type Project = {
   name: string;
@@ -20,6 +20,7 @@ type Project = {
 const categoryStyle: Record<Category, { bg: string; text: string; label: string; tilt: number }> = {
   enterprise: { bg: "bg-ink", text: "text-bone", label: "ENTERPRISE", tilt: -1.5 },
   "e-commerce": { bg: "bg-canvas", text: "text-bone", label: "E-COMMERCE", tilt: 1.5 },
+  mobile: { bg: "bg-blood", text: "text-bone", label: "MOBILE", tilt: -2 },
   marketing: { bg: "bg-neon", text: "text-ink", label: "MARKETING", tilt: -2 },
   branding: { bg: "bg-canvas-hi", text: "text-bone", label: "BRANDING", tilt: 2 },
 };
@@ -51,6 +52,20 @@ const projects: Project[] = [
     ],
     technologies: ["Next.js", "React", "Tailwind", "Redux", "GraphQL", "JIRA"],
     category: "e-commerce",
+  },
+  {
+    name: "Starquik Quick-Commerce App",
+    client: "Starquik",
+    role: "Technical Delivery Lead | React Native",
+    problem:
+      "Hyperlocal quick-commerce app (Blinkit / Zomato-style) shipped cross-platform to iOS and Android from a single React Native codebase.",
+    contributions: [
+      "Led end-to-end delivery and hands-on build of the full browse, cart, and checkout journey with reusable, performant components",
+      "Implemented live order tracking with maps and real-time delivery status updates",
+      "Integrated secure payments and push notifications for confirmations, promotions, and delivery alerts",
+    ],
+    technologies: ["React Native", "TypeScript", "Redux", "REST", "Maps SDK", "Push Notifications", "Payments"],
+    category: "mobile",
   },
   {
     name: "Digital Jewellery Savings Platform",
@@ -144,6 +159,19 @@ const projects: Project[] = [
     category: "e-commerce",
   },
   {
+    name: "B2B Pharma E-commerce",
+    client: "Dr. Reddy's Laboratories",
+    role: "Magento Frontend Developer (Enterprise)",
+    problem: "End-to-end UI for a B2B pharma commerce platform spanning homepage to checkout, integrated with SAP ERP.",
+    contributions: [
+      "Built custom PLP pages, customer approval flow, notification, and service modules wired to SAP ERP",
+      "Implemented Magento PDF invoice design and custom layouts via Page Builder",
+      "Translated Adobe XD wireframes into a production storefront UI",
+    ],
+    technologies: ["Magento 2 (Enterprise)", "SAP ERP", "HTML5", "CSS3", "JavaScript", "Adobe XD"],
+    category: "e-commerce",
+  },
+  {
     name: "CASA OMA Booking Platform",
     client: "CASA OMA",
     role: "Tech Lead | Next.js Developer",
@@ -169,6 +197,32 @@ const projects: Project[] = [
     technologies: ["Adobe Experience Manager", "React.js", "JavaScript", "HTML5", "CSS3"],
     category: "marketing",
   },
+  {
+    name: "E-commerce Platform Revamp",
+    client: "Butterfly Marketing Ltd",
+    role: "Magento Frontend Developer (Enterprise)",
+    problem: "Revamped an existing B2C/B2B commerce site to modern standards from homepage to checkout.",
+    contributions: [
+      "Customised all cart and module UIs from UX wireframes, including external plugin integration",
+      "Supported integrations with ERP, Google Analytics, and Salesforce Marketing",
+      "Modernised the full storefront experience end-to-end",
+    ],
+    technologies: ["Magento 2 (Enterprise)", "HTML5", "CSS3", "JavaScript", "ERP", "Salesforce Marketing"],
+    category: "e-commerce",
+  },
+  {
+    name: "Fit For Growth (FFG) Central",
+    client: "PwC US (Internal)",
+    role: "Magento Frontend Developer (Community)",
+    problem: "Internal B2C template-purchasing platform for global PwC (US), delivered end-to-end.",
+    contributions: [
+      "Delivered the UI end-to-end from homepage to checkout",
+      "Built mobile-responsive layouts across the full purchase journey",
+      "Shipped on Magento 2 Community for an internal enterprise audience",
+    ],
+    technologies: ["Magento 2 (Community)", "HTML5", "CSS3", "JavaScript"],
+    category: "enterprise",
+  },
 ];
 
 export default function Projects() {
@@ -183,11 +237,11 @@ export default function Projects() {
       <div className="absolute top-0 left-0 right-0 bg-canvas text-bone py-2 border-b-[3px] border-ink overflow-hidden">
         <Marquee
           items={[
-            <span key="a" className="display text-xl">11 PLATFORMS</span>,
+            <span key="a" className="display text-xl">15 PLATFORMS</span>,
             <span key="b" className="display text-xl text-neon">★</span>,
             <span key="c" className="display text-xl">10+ GLOBAL CLIENTS</span>,
             <span key="d" className="display text-xl text-neon">★</span>,
-            <span key="e" className="display text-xl">ENTERPRISE / E-COMMERCE / MARKETING / BRANDING</span>,
+            <span key="e" className="display text-xl">ENTERPRISE / E-COMMERCE / MOBILE / MARKETING / BRANDING</span>,
             <span key="f" className="display text-xl text-neon">★</span>,
           ]}
           separator={<span className="mx-5 display text-xl">/</span>}

@@ -108,7 +108,6 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: siteUrl,
-    types: { "application/rss+xml": `${siteUrl}/feed.xml` },
   },
   appleWebApp: {
     capable: true,
