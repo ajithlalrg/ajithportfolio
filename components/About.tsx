@@ -39,7 +39,7 @@ export default function About() {
             <div className="inline-block bg-ink text-bone px-3 py-1 mono uppercase text-[11px] tracking-widest mb-3">
               02 / Profile
             </div>
-            <h2 className="display text-5xl sm:text-7xl text-bone">
+            <h2 aria-label="The human bit." className="display text-5xl sm:text-7xl text-bone">
               <SplitText text="THE HUMAN" />
               <br />
               <SplitText text="BIT." delay={0.15} className="bg-ink text-neon px-3 inline-block" />

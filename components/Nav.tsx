@@ -41,14 +41,14 @@ export default function Nav() {
             <a
               href="#top"
               className="group flex items-center gap-2"
-              aria-label="Home"
               data-cursor="active"
             >
-              <span className="relative inline-flex items-center justify-center w-9 h-9 bg-canvas border-[3px] border-ink rotate-[-6deg] group-hover:rotate-[8deg] transition-transform">
+              <span aria-hidden className="relative inline-flex items-center justify-center w-9 h-9 bg-canvas border-[3px] border-ink rotate-[-6deg] group-hover:rotate-[8deg] transition-transform">
                 <span className="display text-base text-bone">A</span>
                 <span className="absolute -top-1 -right-1 w-2 h-2 bg-neon border border-ink siren" />
               </span>
               <span className="display text-xl tracking-tight">AJITH/LAL</span>
+              <span className="sr-only"> — home</span>
             </a>
           </Magnetic>
 

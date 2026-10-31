@@ -84,7 +84,7 @@ export default function Skills() {
             <div className="inline-block bg-canvas text-bone px-3 py-1 mono uppercase text-[11px] tracking-widest mb-3">
               03 / Stack
             </div>
-            <h2 className="display text-5xl sm:text-7xl">
+            <h2 aria-label="Tools I swing." className="display text-5xl sm:text-7xl">
               <SplitText text="TOOLS I" />{" "}
               <SplitText
                 text="SWING."

@@ -32,7 +32,7 @@ export default function SplitText({
       whileInView="visible"
       viewport={{ once: true, margin: "-60px" }}
       transition={{ staggerChildren: per === "char" ? 0.025 : 0.05, delayChildren: delay }}
-      aria-label={text}
+      // aria-label isn't allowed on a span, so the parent heading carries it
       style={{ display: "inline-block" }}
     >
       {tokens.map((t, i) => {

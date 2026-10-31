@@ -4,8 +4,10 @@ import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
 import { yearsOfExperience } from "@/lib/yoe";
+import { siteUrl, siteName } from "@/lib/site";
 import ServiceWorkerRegister from "@/components/sw-register";
 import CursorFollower from "@/components/CursorFollower";
+import GoogleAnalytics from "@/components/GoogleAnalytics";
 
 const sans = Space_Grotesk({
   subsets: ["latin"],
@@ -27,8 +29,6 @@ const mono = JetBrains_Mono({
 });
 
 const yoe = yearsOfExperience();
-const siteUrl = "https://ajithlalr.vercel.app";
-const siteName = "Ajith Lal R — Engineering Manager & Technical Delivery Manager";
 const siteDescription = `Engineering Manager / Technical Delivery Manager with ${yoe}+ years building enterprise-scale digital platforms across e-commerce, retail, travel, content, and mobile. Leading 20+ engineers at PwC India, shipping with Next.js, React, React Native, AEM, and Magento.`;
 
 export const metadata: Metadata = {
@@ -138,7 +138,7 @@ const personLd = {
   "@type": "Person",
   "@id": `${siteUrl}/#person`,
   name: "Ajith Lal R",
-  alternateName: ["Ajith Lal", "Ajithlal R"],
+  alternateName: ["Ajith Lal", "Ajithlal R", "Ajith Lal Raghavan"],
   url: siteUrl,
   image: {
     "@type": "ImageObject",
@@ -211,104 +211,15 @@ const websiteLd = {
   description: siteDescription,
   inLanguage: "en-US",
   publisher: { "@id": `${siteUrl}/#person` },
-  potentialAction: {
-    "@type": "SearchAction",
-    target: `${siteUrl}/?q={search_term_string}`,
-    "query-input": "required name=search_term_string",
-  },
 };
 
-const webPageLd = {
-  "@context": "https://schema.org",
-  "@type": "ProfilePage",
-  "@id": `${siteUrl}/#webpage`,
-  url: siteUrl,
-  name: siteName,
-  isPartOf: { "@id": `${siteUrl}/#website` },
-  about: { "@id": `${siteUrl}/#person` },
-  mainEntity: { "@id": `${siteUrl}/#person` },
-  primaryImageOfPage: { "@type": "ImageObject", url: `${siteUrl}/opengraph-image` },
-  inLanguage: "en-US",
-  breadcrumb: { "@id": `${siteUrl}/#breadcrumb` },
-};
-
-const breadcrumbLd = {
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "@id": `${siteUrl}/#breadcrumb`,
-  itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Home", item: siteUrl },
-    { "@type": "ListItem", position: 2, name: "Profile", item: `${siteUrl}/#about` },
-    { "@type": "ListItem", position: 3, name: "Experience", item: `${siteUrl}/#experience` },
-    { "@type": "ListItem", position: 4, name: "Projects", item: `${siteUrl}/#projects` },
-    { "@type": "ListItem", position: 5, name: "Contact", item: `${siteUrl}/#contact` },
-  ],
-};
-
-const faqLd = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "@id": `${siteUrl}/#faq`,
-  mainEntity: [
-    {
-      "@type": "Question",
-      name: "Who is Ajith Lal R?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: `Ajith Lal R is an Engineering Manager and Technical Delivery Manager with ${yoe}+ years of experience building enterprise-scale digital platforms. He currently leads 20+ engineers at PwC India, shipping work across e-commerce, retail, travel, content, and mobile using Next.js, React, React Native, Adobe Experience Manager (AEM), and Magento.`,
-      },
-    },
-    {
-      "@type": "Question",
-      name: "What does Ajith Lal R do?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Ajith Lal R runs delivery and frontend architecture for large web platforms. He manages engineering teams, owns technical roadmaps, drives stakeholder alignment, and architects headless-CMS, commerce, and cross-platform mobile systems on Next.js, React, React Native, AEM, and Magento.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Where is Ajith Lal R based?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Ajith Lal R is based in Chennai, Tamil Nadu, India, and is open to remote engagements.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "What technologies and tools does Ajith Lal R specialize in?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "His core stack is Next.js, React, React Native, TypeScript, Adobe Experience Manager (AEM), and Magento. He also works across headless CMS architectures, cross-platform mobile, frontend performance, design systems, and CI/CD delivery practices.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "What certifications does Ajith Lal R hold?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Ajith Lal R is an Adobe Certified Expert — Commerce Frontend Developer and an Adobe Certified Professional — Commerce Business Practitioner.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Is Ajith Lal R available for hire?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Yes. Ajith Lal R is open to Engineering Manager, Technical Delivery Manager, and Frontend Architect roles — full-time, contract, or consulting — based in Chennai or remote.",
-      },
-    },
-  ],
-};
-
-const jsonLd = { "@context": "https://schema.org", "@graph": [personLd, websiteLd, webPageLd, breadcrumbLd, faqLd] };
+// Site-wide entities only. Page-specific JSON-LD (ProfilePage + FAQPage, case studies) lives with each page.
+const jsonLd = { "@context": "https://schema.org", "@graph": [personLd, websiteLd] };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
       <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
         <link rel="alternate" type="text/html" href="/sitemap.html" title="HTML Sitemap" />
         <meta name="geo.region" content="IN-TN" />
@@ -324,6 +235,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <ServiceWorkerRegister />
         <Analytics />
         <SpeedInsights />
+        <GoogleAnalytics />
       </body>
     </html>
   );

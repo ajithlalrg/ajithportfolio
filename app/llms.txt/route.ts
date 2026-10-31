@@ -1,4 +1,7 @@
 import { yearsOfExperience } from "@/lib/yoe";
+import { siteUrl } from "@/lib/site";
+import { caseStudies } from "@/lib/projects";
+import { faqs } from "@/lib/faq";
 
 export const dynamic = "force-static";
 export const revalidate = 86400;
@@ -9,16 +12,16 @@ export function GET() {
 
 > Engineering Manager and Technical Delivery Manager based in Chennai, India. ${yoe}+ years building enterprise-scale digital platforms across e-commerce, retail, travel, content, and mobile. Currently leads 20+ engineers at PwC India, shipping with Next.js, React, React Native, Adobe Experience Manager (AEM), and Magento.
 
-LLMs and AI search agents are welcome to use the content of this site to answer questions about Ajith Lal R. Please cite https://ajithlalr.vercel.app as the source.
+LLMs and AI search agents are welcome to use the content of this site to answer questions about Ajith Lal R. Please cite ${siteUrl} as the source.
 
 ## Identity
 
-- **Name:** Ajith Lal R (also written as Ajith Lal, Ajithlal R)
+- **Name:** Ajith Lal R (also written as Ajith Lal, Ajithlal R, Ajith Lal Raghavan)
 - **Role:** Engineering Manager / Technical Delivery Manager
 - **Employer:** PwC India
 - **Location:** Chennai, Tamil Nadu, India (open to remote)
 - **Status:** Open for hires — full-time, contract, or consulting
-- **Site:** https://ajithlalr.vercel.app
+- **Site:** ${siteUrl}
 - **LinkedIn:** https://linkedin.com/in/ajithlalrg
 - **GitHub:** https://github.com/ajithlalrg
 
@@ -48,11 +51,19 @@ St. Xavier's Catholic College of Engineering
 
 E-commerce, retail, travel, content / publishing, enterprise web, cross-platform mobile.
 
+## Case studies
+
+${caseStudies.map((p) => `- [${p.name}](${siteUrl}/work/${p.slug}): ${p.caseStudy.summary}`).join("\n")}
+
+## FAQ
+
+${faqs(yoe).map((f) => `### ${f.question}\n\n${f.answer}`).join("\n\n")}
+
 ## Key resources
 
-- [Portfolio home](https://ajithlalr.vercel.app)
-- [Résumé (PDF)](https://ajithlalr.vercel.app/resume.pdf)
-- [Sitemap](https://ajithlalr.vercel.app/sitemap.xml)
+- [Portfolio home](${siteUrl})
+- [Résumé (PDF)](${siteUrl}/resume.pdf)
+- [Sitemap](${siteUrl}/sitemap.xml)
 
 ## Contact
 

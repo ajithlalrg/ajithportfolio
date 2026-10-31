@@ -1,7 +1,8 @@
 import { MetadataRoute } from 'next';
+import { siteUrl } from '@/lib/site';
 
 export default function robots(): MetadataRoute.Robots {
-  const baseUrl = 'https://ajithlalr.vercel.app';
+  const baseUrl = siteUrl;
 
   return {
     rules: [

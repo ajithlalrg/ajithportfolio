@@ -60,9 +60,9 @@ export default function Contact() {
           className="text-center mb-14"
         >
           <div className="inline-block bg-ink text-bone px-3 py-1 mono uppercase text-[11px] tracking-widest mb-4">
-            06 / Holler
+            07 / Holler
           </div>
-          <h2 className="display text-6xl sm:text-8xl lg:text-9xl leading-[0.85] text-bone">
+          <h2 aria-label="Let's build something loud." className="display text-6xl sm:text-8xl lg:text-9xl leading-[0.85] text-bone">
             <SplitText text="LET'S BUILD" />
             <br />
             <SplitText

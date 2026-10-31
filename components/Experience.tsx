@@ -110,7 +110,7 @@ export default function Experience() {
             <div className="inline-block bg-ink text-bone px-3 py-1 mono uppercase text-[11px] tracking-widest mb-3">
               04 / Path
             </div>
-            <h2 className="display text-5xl sm:text-7xl text-bone">
+            <h2 aria-label="From PHP to manager." className="display text-5xl sm:text-7xl text-bone">
               <SplitText text="FROM" />{" "}
               <SplitText text="PHP" delay={0.05} className="bg-neon text-ink border-[3px] border-ink inline-block px-3" />{" "}
               <SplitText text="TO" delay={0.1} />{" "}

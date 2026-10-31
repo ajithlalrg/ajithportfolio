@@ -77,8 +77,8 @@ export default function Hero() {
         <div className="grid lg:grid-cols-[1.45fr_1fr] gap-10 lg:gap-12 items-start">
           {/* LEFT */}
           <motion.div style={{ y: y1 }}>
-            <h2
-              aria-label="Ajith Lal R — Engineer, Manager, Architect"
+            <h1
+              aria-label="Ajith Lal R — Engineering Manager & Technical Delivery Manager"
               className="display text-[18vw] sm:text-[12vw] lg:text-[9.5vw] xl:text-[10rem] text-bone wrap-break-word m-0"
             >
               <span className="block">
@@ -96,19 +96,15 @@ export default function Hero() {
                   />
                 </span>
               </span>
-            </h2>
+            </h1>
 
-            <motion.p
-              initial={{ y: 24, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: 1.2 }}
-              className="mt-8 max-w-xl text-lg sm:text-xl leading-snug text-bone"
-            >
+            {/* LCP element on mobile: keep it visible on first paint, no fade-in */}
+            <p className="mt-8 max-w-xl text-lg sm:text-xl leading-snug text-bone">
               I run delivery and architecture for big web platforms. Currently
               shipping enterprise things at <strong className="text-ink bg-bone px-1.5 border-[2px] border-ink">PwC India</strong> with{" "}
               <strong className="text-ink bg-neon px-1.5 border-[2px] border-ink">Next.js · React · React Native · AEM · Magento</strong>. Lead
               20+ engineers across e-commerce, retail, travel, content, and mobile.
-            </motion.p>
+            </p>
 
             <motion.div
               initial={{ y: 24, opacity: 0 }}
@@ -206,7 +202,7 @@ export default function Hero() {
               initial={{ scale: 0.3, rotate: -30, opacity: 0 }}
               animate={{ scale: 1, rotate: 8, opacity: 1 }}
               transition={{ type: "spring", stiffness: 160, damping: 14, delay: 0.75 }}
-              className="absolute bottom-44 sm:bottom-44 left-6 sm:left-20 bg-canvas-hi text-bone border-[3px] border-ink chunk px-3 py-2 z-10"
+              className="absolute bottom-44 sm:bottom-44 left-6 sm:left-20 bg-canvas-hi text-ink border-[3px] border-ink chunk px-3 py-2 z-10"
             >
               <span className="mono uppercase text-[11px] tracking-widest">@ pwc india</span>
             </motion.div>
